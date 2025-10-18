@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KI-gestützte Unterrichtsmaterialien für moderne Bildung">
+    <title>KI & Unterricht - Materialsammlung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --success: #10b981;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--gray-700);
+            font-size: 1rem;
+        }
+
+        /* Filter Section */
+        .filters {
+            background: white;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1280px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-box {
+            grid-column: 1 / -1;
+        }
+
+        .reset-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--gray-200);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--gray-700);
+        }
+
+        .reset-btn:hover {
+            background: var(--gray-300);
+        }
+
+        /* Stats */
+        .stats {
+            text-align: center;
+            color: var(--gray-700);
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .stats strong {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Material Grid */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Material Card */
+        .material-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .material-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            color: var(--gray-700);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-fach {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .tag-stufe {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tag-ki-a {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .tag-ki-b {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tag-ki-c {
+            background: #fce7f3;
+            color: #9f1239;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .card-link:hover {
+            color: var(--primary-dark);
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            color: var(--gray-700);
+            margin-top: 3rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-700);
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-content, .container, .filters {
+                padding: 1rem;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Legend */
+        .legend {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .legend h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--gray-800);
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🎓 KI & Unterricht</h1>
+            <p class="subtitle">Moderne Unterrichtsmaterialien mit und über Künstliche Intelligenz</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label for="filterFach">Fach</label>
+                    <select id="filterFach">
+                        <option value="">Alle Fächer</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterKI">KI-Kategorie</label>
+                    <select id="filterKI">
+                        <option value="">Alle Kategorien</option>
+                        <option value="a">a - Statisch (mit KI erstellt)</option>
+                        <option value="b">b - API (aktiv)</option>
+                        <option value="c">c - API + WebSockets</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterStufe">Klassenstufe</label>
+                    <select id="filterStufe">
+                        <option value="">Alle Stufen</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterTyp">Material-Typ</label>
+                    <select id="filterTyp">
+                        <option value="">Alle Typen</option>
+                    </select>
+                </div>
+                <div class="filter-group search-box">
+                    <label for="search">Suche</label>
+                    <input type="text" id="search" placeholder="Durchsuche Titel und Beschreibungen...">
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <button class="reset-btn" onclick="resetFilters()">Filter zurücksetzen</button>
+                <div class="stats">
+                    <strong id="count">0</strong> Materialien gefunden
+                </div>
+            </div>
+            
+            <div class="legend">
+                <h4>KI-Kategorien:</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="tag tag-ki-a">A</span>
+                        <span>Mit KI erstellt (statisch)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="tag tag-ki-b">B</span>
+                        <span>Mit KI aktiv (API)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="tag tag-ki-c">C</span>
+                        <span>API + WebSockets (Kooperation)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="materials-grid" id="materialsGrid"></div>
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>Keine Materialien gefunden</h3>
+            <p>Versuche andere Filter oder eine andere Suche.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>KI & Unterricht - Materialsammlung | Erstellt mit ❤️ für moderne Bildung</p>
+    </footer>
+
+    <script>
+        const materials = [
+            { titel: "Laborgeräte Klasse 7", fach: "Chemie", kiKat: "a", stufe: "5-7", typ: "📄 Arbeitsblatt", beschreibung: "Übersicht wichtigster Laborgeräte", link: "https://wilski54.github.io/Laborgeraete_2/" },
+            { titel: "Mendelsche Gesetze I", fach: "Biologie", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Vererbungsregeln - Interaktive Worksheet", link: "https://wilski54.github.io/Vererbung_1/" },
+            { titel: "Digitaler Lern-Assistent", fach: "KI", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "GSM - Automatisiertes Tutorsystem", link: "https://wilski54.github.io/KI-Assisten/" },
+            { titel: "Interaktive Zuordnungsübung", fach: "GL", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Fragen zu Zeitzeugen", link: "https://wilski54.github.io/Europa2/" },
+            { titel: "Texte lesen und verstehen", fach: "Deutsch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "KI-unterstütztes Leseverstehen", link: "https://wilski54.github.io/Texte_lesen/" },
+            { titel: "Memory (London)", fach: "Englisch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "London Memory Game", link: "https://wilski54.github.io/memory/" },
+            { titel: "Lineare Funktionen", fach: "Mathematik", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Funktionen interaktiv", link: "https://wilski54.github.io/Lineare_Funktionen_Interaktiv/" },
+            { titel: "Übungen zur Aussprache", fach: "Übergreifend", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Hä? - Sprachübungen", link: "https://wilski54.github.io/ausprache/" },
+            { titel: "KI AG", fach: "Übergreifend", kiKat: "a", stufe: "Alle", typ: "🎥 Multimedia", beschreibung: "Programmieren lernen mit KI", link: "https://wilski54.github.io/Arcade80/" },
+            { titel: "Vorlage Versuchsprotokoll", fach: "Chemie", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Strukturierte Vorlage für Experimente", link: "https://wilski54.github.io/Versuchsprotokoll_WK/" },
+            { titel: "Das Lichtmikroskop", fach: "Biologie", kiKat: "a", stufe: "5-7", typ: "📄 Arbeitsblatt", beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter", link: "https://wilski54.github.io/microscop/" },
+            { titel: "Individuelle Aufgabenstellung", fach: "Deutsch", kiKat: "a", stufe: "Alle", typ: "📄 Arbeitsblatt", beschreibung: "KI-generierte individuelle Texte", link: "https://wilski54.github.io/Level_Wohen/" },
+            { titel: "DialogLab", fach: "Englisch", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "Dialog üben mit KI-Feedback", link: "https://wilski54.github.io/LearningLab/" },
+            { titel: "Das magische Labyrinth ARITHMA", fach: "Mathematik", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Die Multiplikation für Kinder", link: "https://wilski54.github.io/arithma10/" },
+            { titel: "Rechenwege mit KI Assistent", fach: "Mathematik", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Schritt-für-Schritt Rechenwege", link: "https://wilski54.github.io/Matheassitent/" },
+            { titel: "Automatisierter Korrekturassistent", fach: "Chemie", kiKat: "b", stufe: "Alle", typ: "🔧 Tool", beschreibung: "Aufsätze korrigieren mit KI", link: "https://wilski54.github.io/AutometdTest/" },
+            { titel: "Digitaler Diskussionspartner", fach: "Übergreifend", kiKat: "b", stufe: "8-10", typ: "🤖 KI-Assistent", beschreibung: "Fach-Präsentationen - Diskussionspartner", link: "https://drwk4.pythonanywhere.com/" },
+            { titel: "Kooperatives Lernsystem", fach: "Übergreifend", kiKat: "c", stufe: "Alle", typ: "🔧 Tool", beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit", link: "https://wilski54.github.io/kolaborativ/" },
+            { titel: "Interview mit Zeitzeugen", fach: "GL", kiKat: "b", stufe: "8-10", typ: "🎥 Multimedia", beschreibung: "Interaktive historische Interviews", link: "https://wilski54.github.io/Essam_KI_2/" },
+            { titel: "Automatisches Feedback", fach: "GL", kiKat: "b", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Durch KI generiertes Feedback auf Schülereingaben", link: "https://wilski54.github.io/automte_response/" }
+        ];
+
+        // Populate filters
+        const faecher = [...new Set(materials.map(m => m.fach))].sort();
+        const stufen = [...new Set(materials.map(m => m.stufe))].sort();
+        const typen = [...new Set(materials.map(m => m.typ))].sort();
+
+        const fachSelect = document.getElementById('filterFach');
+        const stufeSelect = document.getElementById('filterStufe');
+        const typSelect = document.getElementById('filterTyp');
+
+        faecher.forEach(f => {
+            const option = document.createElement('option');
+            option.value = f;
+            option.textContent = f;
+            fachSelect.appendChild(option);
+        });
+
+        stufen.forEach(s => {
+            const option = document.createElement('option');
+            option.value = s;
+            option.textContent = s;
+            stufeSelect.appendChild(option);
+        });
+
+        typen.forEach(t => {
+            const option = document.createElement('option');
+            option.value = t;
+            option.textContent = t;
+            typSelect.appendChild(option);
+        });
+
+        function renderMaterials() {
+            const fachFilter = document.getElementById('filterFach').value;
+            const kiFilter = document.getElementById('filterKI').value;
+            const stufeFilter = document.getElementById('filterStufe').value;
+            const typFilter = document.getElementById('filterTyp').value;
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+
+            const filtered = materials.filter(m => {
+                const matchFach = !fachFilter || m.fach === fachFilter;
+                const matchKI = !kiFilter || m.kiKat === kiFilter;
+                const matchStufe = !stufeFilter || m.stufe === stufeFilter;
+                const matchTyp = !typFilter || m.typ === typFilter;
+                const matchSearch = !searchTerm || 
+                    m.titel.toLowerCase().includes(searchTerm) || 
+                    m.beschreibung.toLowerCase().includes(searchTerm);
+
+                return matchFach && matchKI && matchStufe && matchTyp && matchSearch;
+            });
+
+            const grid = document.getElementById('materialsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (filtered.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                grid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+
+            grid.innerHTML = filtered.map(m => {
+                const icon = m.typ.split(' ')[0];
+                return `
+                    <div class="material-card" onclick="window.open('${m.link}', '_blank')">
+                        <div class="card-header">
+                            <div class="card-icon">${icon}</div>
+                            <div style="flex: 1;">
+                                <h3 class="card-title">${m.titel}</h3>
+                            </div>
+                        </div>
+                        <p class="card-description">${m.beschreibung}</p>
+                        <div class="card-tags">
+                            <span class="tag tag-fach">${m.fach}</span>
+                            <span class="tag tag-stufe">${m.stufe}</span>
+                            <span class="tag tag-ki-${m.kiKat}">${m.kiKat.toUpperCase()}</span>
+                        </div>
+                        <a href="${m.link}" class="card-link" target="_blank" onclick="event.stopPropagation()">
+                            Material öffnen →
+                        </a>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('count').textContent = filtered.length;
+        }
+
+        function resetFilters() {
+            document.getElementById('filterFach').value = '';
+            document.getElementById('filterKI').value = '';
+            document.getElementById('filterStufe').value = '';
+            document.getElementById('filterTyp').value = '';
+            document.getElementById('search').value = '';
+            renderMaterials();
+        }
+
+        // Event listeners
+        document.getElementById('filterFach').addEventListener('change', renderMaterials);
+        document.getElementById('filterKI').addEventListener('change', renderMaterials);
+        document.getElementById('filterStufe').addEventListener('change', renderMaterials);
+        document.getElementById('filterTyp').addEventListener('change', renderMaterials);
+        document.getElementById('search').addEventListener('input', renderMaterials);
+
+        // Initial render
+        renderMaterials();
+    </script>
+</body>
+</html>
