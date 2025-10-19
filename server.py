@@ -1,9 +1,13 @@
-# server.py - Python Webserver mit Basic Auth
+# server.py - Python Webserver mit Basic Auth und korrekten MIME-Types
 
 from flask import Flask, send_from_directory, request, Response
 import os
+import mimetypes
 
 app = Flask(__name__)
+
+# MIME-Types initialisieren
+mimetypes.init()
 
 # Passwort-Schutz
 USERNAME = os.environ.get('AUTH_USERNAME', 'admin')
@@ -33,15 +37,35 @@ def requires_auth(f):
 def index():
     return send_from_directory('.', 'index.html')
 
-# --- KORRIGIERTE ROUTE FÜR STATIC-DATEIEN ---
-# Diese Route fängt Anfragen an /static/ ab (z.B. /static/chemie.png)
-# und wendet den Passwortschutz darauf an.
 @app.route('/static/<path:filename>')
 @requires_auth
 def serve_static(filename):
-    # Sie sucht im Ordner 'static' nach der angeforderten Datei
-    return send_from_directory('static', filename)
+    """
+    Serviert Dateien aus dem static-Ordner mit korrekten MIME-Types
+    """
+    response = send_from_directory('static', filename)
+    
+    # Stelle sicher, dass PNG-Dateien den korrekten MIME-Type haben
+    if filename.endswith('.png'):
+        response.headers['Content-Type'] = 'image/png'
+    elif filename.endswith('.jpg') or filename.endswith('.jpeg'):
+        response.headers['Content-Type'] = 'image/jpeg'
+    elif filename.endswith('.svg'):
+        response.headers['Content-Type'] = 'image/svg+xml'
+    
+    # Cache-Control für bessere Performance
+    response.headers['Cache-Control'] = 'public, max-age=3600'
+    
+    return response
+
+@app.after_request
+def add_security_headers(response):
+    """
+    Fügt Sicherheitsheader hinzu
+    """
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    return response
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 10000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=False)
