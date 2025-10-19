@@ -296,9 +296,42 @@
             letter-spacing: 0.05em;
         }
 
+        /* Fach-spezifische Tag-Farben - EXAKT wie die Icon-Farben */
         .tag-fach {
-            background: #dbeafe;
-            color: #1e40af;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .tag-fach.fach-chemie {
+            background: #dc2626; /* Rot - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-biologie {
+            background: #15803d; /* Dunkelgrün - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-mathematik {
+            background: #2563eb; /* Blau - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-ki {
+            background: #0d9488; /* Türkis - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-deutsch {
+            background: #f97316; /* Orange - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-englisch {
+            background: #7c3aed; /* Lila - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-gl {
+            background: #78350f; /* Braun - exakt wie Icon */
+        }
+        
+        .tag-fach.fach-uebergreifend {
+            background: #6b7280; /* Grau - exakt wie Icon */
         }
 
         .tag-stufe {
@@ -608,7 +641,7 @@
                         </div>
                         <p class="card-description">${m.beschreibung}</p>
                         <div class="card-tags">
-                            <span class="tag tag-fach">${m.fach}</span>
+                            <span class="tag tag-fach ${fachClass}">${m.fach}</span>
                             <span class="tag tag-stufe">${m.stufe}</span>
                             <span class="tag tag-ki-${m.kiKat}">${m.kiKat.toUpperCase()}</span>
                         </div>
