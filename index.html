@@ -160,7 +160,6 @@
             margin-bottom: 3rem;
         }
 
-        /* Card Flip Container */
         .card-flip-container {
             perspective: 1000px;
             height: 280px;
@@ -299,7 +298,6 @@
             color: #9f1239;
         }
 
-        /* Rückseiten-Inhalt */
         .card-back h3 {
             margin: 0 0 1rem 0;
             font-size: 1rem;
@@ -358,7 +356,6 @@
             background: var(--gray-300);
         }
 
-        /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -628,7 +625,6 @@
         </div>
     </div>
 
-    <!-- Modal -->
     <div class="modal-overlay" id="modal" onclick="closeModalOnOutside(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal()">×</button>
@@ -642,13 +638,14 @@
 
     <script>
         const materials = [
-            { 
-                titel: "Laborgeräte Klasse 7", 
-                fach: "Chemie", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "📄 Arbeitsblatt", 
-                beschreibung: "Übersicht wichtigster Laborgeräte", 
+            {
+                id: 0,
+                titel: "Laborgeräte Klasse 7",
+                fach: "Chemie",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "📄 Arbeitsblatt",
+                beschreibung: "Übersicht wichtigster Laborgeräte",
                 link: "https://wilski54.github.io/Laborgeraete_2/",
                 kurzFeatures: ["Interaktive Darstellung", "Selbstlernmodus", "Druckbare Version"],
                 langbeschreibung: "Ein interaktives Arbeitsblatt zur Einführung in wichtige Laborgeräte für die Klassenstufen 5-7.",
@@ -656,13 +653,14 @@
                 lernziele: ["Kennenlernen der Grundausstattung eines Chemielabors", "Sichere Handhabung von Laborgeräten", "Verständnis der verschiedenen Funktionen"],
                 einsatz: "Ideal für den Einstieg in experimentelles Arbeiten. Kann sowohl im Klassenverband als auch zur Einzelarbeit genutzt werden."
             },
-            { 
-                titel: "Mendelsche Gesetze I", 
-                fach: "Biologie", 
-                kiKat: "a", 
-                stufe: "8-10", 
-                typ: "📄 Arbeitsblatt", 
-                beschreibung: "Vererbungsregeln - Interaktive Worksheet", 
+            {
+                id: 1,
+                titel: "Mendelsche Gesetze I",
+                fach: "Biologie",
+                kiKat: "a",
+                stufe: "8-10",
+                typ: "📄 Arbeitsblatt",
+                beschreibung: "Vererbungsregeln - Interaktive Worksheet",
                 link: "https://wilski54.github.io/Vererbung_1/",
                 kurzFeatures: ["Mendel-Regeln visualisiert", "Interaktive Aufgaben", "Sofort-Feedback"],
                 langbeschreibung: "Interaktives Arbeitsblatt zu den Mendelschen Vererbungsregeln mit praktischen Aufgaben.",
@@ -670,13 +668,14 @@
                 lernziele: ["Verständnis der Mendelschen Regeln", "Anwendung auf praktische Beispiele", "Phänotyp und Genotyp unterscheiden"],
                 einsatz: "Perfekt für den Genetik-Unterricht. Einzelarbeit oder Partnerarbeit möglich."
             },
-            { 
-                titel: "Digitaler Lern-Assistent", 
-                fach: "KI", 
-                kiKat: "b", 
-                stufe: "Alle", 
-                typ: "🤖 KI-Assistent", 
-                beschreibung: "GSM - Automatisiertes Tutorsystem", 
+            {
+                id: 2,
+                titel: "Digitaler Lern-Assistent",
+                fach: "KI",
+                kiKat: "b",
+                stufe: "Alle",
+                typ: "🤖 KI-Assistent",
+                beschreibung: "GSM - Automatisiertes Tutorsystem",
                 link: "https://wilski54.github.io/KI-Assisten/",
                 kurzFeatures: ["KI-gestützte Hilfe", "Adaptive Fragen", "Individuelles Lerntempo"],
                 langbeschreibung: "Ein KI-gestützter Lernassistent, der Schülern individuell beim Lernen hilft.",
@@ -684,13 +683,14 @@
                 lernziele: ["Selbstständiges Lernen fördern", "Individuelle Unterstützung bieten", "Lernlücken identifizieren"],
                 einsatz: "Ideal für Hausaufgaben, Nachhilfe oder Vertretungsstunden."
             },
-            { 
-                titel: "Interaktive Zuordnungsübung", 
-                fach: "GL", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "🎮 Interaktive Übung", 
-                beschreibung: "Fragen zu Zeitzeugen", 
+            {
+                id: 3,
+                titel: "Interaktive Zuordnungsübung",
+                fach: "GL",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "🎮 Interaktive Übung",
+                beschreibung: "Fragen zu Zeitzeugen",
                 link: "https://wilski54.github.io/Europa2/",
                 kurzFeatures: ["Historische Interviews", "Zuordnungsaufgaben", "Quiz-Modus"],
                 langbeschreibung: "Interaktive Übungen zu historischen Zeitzeugen und Ereignissen.",
@@ -698,13 +698,14 @@
                 lernziele: ["Historisches Verständnis entwickeln", "Quellenkritik üben", "Zeitgeschichte verstehen"],
                 einsatz: "Für Geschichtsunterricht und fächerübergreifende Projekte."
             },
-            { 
-                titel: "Texte lesen und verstehen", 
-                fach: "Deutsch", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "🎮 Interaktive Übung", 
-                beschreibung: "KI-unterstütztes Leseverstehen", 
+            {
+                id: 4,
+                titel: "Texte lesen und verstehen",
+                fach: "Deutsch",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "🎮 Interaktive Übung",
+                beschreibung: "KI-unterstütztes Leseverstehen",
                 link: "https://wilski54.github.io/Texte_lesen/",
                 kurzFeatures: ["Leseverstehen trainieren", "Verständnisfragen", "Textanalyse"],
                 langbeschreibung: "KI-gestützte Übungen zum Leseverstehen mit verschiedenen Textsorten.",
@@ -712,13 +713,14 @@
                 lernziele: ["Lesekompetenz verbessern", "Textverständnis fördern", "Analytisches Denken schulen"],
                 einsatz: "Für Deutschunterricht und Leseförderung."
             },
-            { 
-                titel: "Memory (London)", 
-                fach: "Englisch", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "🎮 Interaktive Übung", 
-                beschreibung: "London Memory Game", 
+            {
+                id: 5,
+                titel: "Memory (London)",
+                fach: "Englisch",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "🎮 Interaktive Übung",
+                beschreibung: "London Memory Game",
                 link: "https://wilski54.github.io/memory/",
                 kurzFeatures: ["Vokabeln spielerisch", "London-Thema", "Gedächtnistraining"],
                 langbeschreibung: "Spielerisches Vokabeltraining mit London-Bezug im Memory-Format.",
@@ -726,13 +728,14 @@
                 lernziele: ["Vokabeln festigen", "Landeskunde London", "Gedächtnis trainieren"],
                 einsatz: "Ideal für Einstieg oder Auflockerung im Englischunterricht."
             },
-            { 
-                titel: "Lineare Funktionen", 
-                fach: "Mathematik", 
-                kiKat: "a", 
-                stufe: "8-10", 
-                typ: "📄 Arbeitsblatt", 
-                beschreibung: "Funktionen interaktiv", 
+            {
+                id: 6,
+                titel: "Lineare Funktionen",
+                fach: "Mathematik",
+                kiKat: "a",
+                stufe: "8-10",
+                typ: "📄 Arbeitsblatt",
+                beschreibung: "Funktionen interaktiv",
                 link: "https://wilski54.github.io/Lineare_Funktionen_Interaktiv/",
                 kurzFeatures: ["Graphen visualisieren", "Parameter ändern", "Übungsaufgaben"],
                 langbeschreibung: "Interaktive Übungen zu linearen Funktionen mit visueller Darstellung.",
@@ -740,13 +743,14 @@
                 lernziele: ["Funktionsbegriff verstehen", "Graphen zeichnen können", "Parameter-Einfluss erkennen"],
                 einsatz: "Für Mathematikunterricht Klasse 8-10, Einzel- oder Gruppenarbeit."
             },
-            { 
-                titel: "Übungen zur Aussprache", 
-                fach: "Übergreifend", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "🎮 Interaktive Übung", 
-                beschreibung: "Hä? - Sprachübungen", 
+            {
+                id: 7,
+                titel: "Übungen zur Aussprache",
+                fach: "Übergreifend",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "🎮 Interaktive Übung",
+                beschreibung: "Hä? - Sprachübungen",
                 link: "https://wilski54.github.io/ausprache/",
                 kurzFeatures: ["Aussprache-Training", "Audio-Feedback", "Verschiedene Sprachen"],
                 langbeschreibung: "Sprachübergreifende Aussprache-Übungen mit Audio-Unterstützung.",
@@ -754,13 +758,14 @@
                 lernziele: ["Aussprache verbessern", "Sprachgefühl entwickeln", "Selbstbewusstsein beim Sprechen stärken"],
                 einsatz: "Für Sprachunterricht und DaZ/DaF."
             },
-            { 
-                titel: "KI AG", 
-                fach: "Übergreifend", 
-                kiKat: "a", 
-                stufe: "Alle", 
-                typ: "🎥 Multimedia", 
-                beschreibung: "Programmieren lernen mit KI", 
+            {
+                id: 8,
+                titel: "KI AG",
+                fach: "Übergreifend",
+                kiKat: "a",
+                stufe: "Alle",
+                typ: "🎥 Multimedia",
+                beschreibung: "Programmieren lernen mit KI",
                 link: "https://wilski54.github.io/Arcade80/",
                 kurzFeatures: ["KI-Grundlagen", "Programmier-Einführung", "Projekt-basiert"],
                 langbeschreibung: "Einführung ins Programmieren mit KI-Unterstützung durch praktische Projekte.",
@@ -768,13 +773,14 @@
                 lernziele: ["Programmier-Grundlagen", "KI verstehen", "Eigene Projekte umsetzen"],
                 einsatz: "Für AGs, Informatik-Unterricht oder Projekt-Wochen."
             },
-            { 
-                titel: "Vorlage Versuchsprotokoll", 
-                fach: "Chemie", 
-                kiKat: "b", 
-                stufe: "5-10", 
-                typ: "🤖 KI-Assistent", 
-                beschreibung: "Strukturierte Vorlage für Experimente", 
+            {
+                id: 9,
+                titel: "Vorlage Versuchsprotokoll",
+                fach: "Chemie",
+                kiKat: "b",
+                stufe: "5-10",
+                typ: "🤖 KI-Assistent",
+                beschreibung: "Strukturierte Vorlage für Experimente",
                 link: "https://wilski54.github.io/Versuchsprotokoll_WK/",
                 kurzFeatures: ["Protokoll-Struktur", "KI-Hilfe", "Vorlagen-Generator"],
                 langbeschreibung: "KI-gestützte Vorlage zum Erstellen strukturierter Versuchsprotokolle.",
@@ -782,13 +788,14 @@
                 lernziele: ["Protokolle korrekt schreiben", "Wissenschaftliches Arbeiten lernen", "Strukturiert dokumentieren"],
                 einsatz: "Für alle Experimente im Chemie- und Physikunterricht."
             },
-            { 
-                titel: "Das Lichtmikroskop", 
-                fach: "Biologie", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "📄 Arbeitsblatt", 
-                beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter", 
+            {
+                id: 10,
+                titel: "Das Lichtmikroskop",
+                fach: "Biologie",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "📄 Arbeitsblatt",
+                beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter",
                 link: "https://wilski54.github.io/microscop/",
                 kurzFeatures: ["Mikroskop-Aufbau", "Bedienung lernen", "Quiz"],
                 langbeschreibung: "Interaktives Material zum Aufbau und zur Bedienung des Lichtmikroskops.",
@@ -796,13 +803,14 @@
                 lernziele: ["Mikroskop-Aufbau kennen", "Richtige Bedienung erlernen", "Präparate herstellen"],
                 einsatz: "Vor dem ersten Mikroskopieren im Biologieunterricht."
             },
-            { 
-                titel: "Individuelle Aufgabenstellung", 
-                fach: "Deutsch", 
-                kiKat: "a", 
-                stufe: "Alle", 
-                typ: "📄 Arbeitsblatt", 
-                beschreibung: "KI-generierte individuelle Texte", 
+            {
+                id: 11,
+                titel: "Individuelle Aufgabenstellung",
+                fach: "Deutsch",
+                kiKat: "a",
+                stufe: "Alle",
+                typ: "📄 Arbeitsblatt",
+                beschreibung: "KI-generierte individuelle Texte",
                 link: "https://wilski54.github.io/Level_Wohen/",
                 kurzFeatures: ["Individuelle Texte", "Schwierigkeitsanpassung", "Automatische Korrektur"],
                 langbeschreibung: "System zur Erstellung individueller Aufgabenstellungen mit angepasstem Schwierigkeitsgrad.",
@@ -810,13 +818,14 @@
                 lernziele: ["Individuelle Förderung", "Differenzierung", "Selbstständiges Arbeiten"],
                 einsatz: "Für binnendifferenzierten Unterricht in allen Klassenstufen."
             },
-            { 
-                titel: "DialogLab", 
-                fach: "Englisch", 
-                kiKat: "b", 
-                stufe: "Alle", 
-                typ: "🤖 KI-Assistent", 
-                beschreibung: "Dialog üben mit KI-Feedback", 
+            {
+                id: 12,
+                titel: "DialogLab",
+                fach: "Englisch",
+                kiKat: "b",
+                stufe: "Alle",
+                typ: "🤖 KI-Assistent",
+                beschreibung: "Dialog üben mit KI-Feedback",
                 link: "https://wilski54.github.io/LearningLab/",
                 kurzFeatures: ["Dialog-Training", "KI-Feedback", "Verschiedene Szenarien"],
                 langbeschreibung: "KI-gestütztes Dialog-Training mit authentischen Gesprächssituationen.",
@@ -824,13 +833,14 @@
                 lernziele: ["Dialoge führen können", "Sprechkompetenz verbessern", "Selbstbewusstsein stärken"],
                 einsatz: "Für Speaking-Training im Englischunterricht."
             },
-            { 
-                titel: "Das magische Labyrinth ARITHMA", 
-                fach: "Mathematik", 
-                kiKat: "a", 
-                stufe: "5-7", 
-                typ: "🎮 Interaktive Übung", 
-                beschreibung: "Die Multiplikation für Kinder", 
+            {
+                id: 13,
+                titel: "Das magische Labyrinth ARITHMA",
+                fach: "Mathematik",
+                kiKat: "a",
+                stufe: "5-7",
+                typ: "🎮 Interaktive Übung",
+                beschreibung: "Die Multiplikation für Kinder",
                 link: "https://wilski54.github.io/arithma10/",
                 kurzFeatures: ["Spielerisches Lernen", "Multiplikation üben", "Abenteuer-Story"],
                 langbeschreibung: "Spielbasiertes Lernen der Multiplikation in einer Abenteuer-Geschichte.",
@@ -838,13 +848,14 @@
                 lernziele: ["Einmaleins festigen", "Rechenstrategien entwickeln", "Motivation steigern"],
                 einsatz: "Für Übungsphasen oder als Hausaufgabe."
             },
-            { 
-                titel: "Rechenwege mit KI Assistent", 
-                fach: "Mathematik", 
-                kiKat: "b", 
-                stufe: "5-10", 
-                typ: "🤖 KI-Assistent", 
-                beschreibung: "Schritt-für-Schritt Rechenwege", 
+            {
+                id: 14,
+                titel: "Rechenwege mit KI Assistent",
+                fach: "Mathematik",
+                kiKat: "b",
+                stufe: "5-10",
+                typ: "🤖 KI-Assistent",
+                beschreibung: "Schritt-für-Schritt Rechenwege",
                 link: "https://wilski54.github.io/Matheassitent/",
                 kurzFeatures: ["Schrittweise Lösung", "Erklärungen", "Verschiedene Strategien"],
                 langbeschreibung: "KI-Assistent, der Rechenwege Schritt für Schritt erklärt und verschiedene Lösungsstrategien aufzeigt.",
@@ -852,13 +863,14 @@
                 lernziele: ["Lösungsstrategien verstehen", "Selbstständig rechnen lernen", "Mathematisches Verständnis entwickeln"],
                 einsatz: "Für Hausaufgaben-Hilfe und individuelles Üben."
             },
-            { 
-                titel: "Automatisierter Korrekturassistent", 
-                fach: "Chemie", 
-                kiKat: "b", 
-                stufe: "Alle", 
-                typ: "🔧 Tool", 
-                beschreibung: "Aufsätze korrigieren mit KI", 
+            {
+                id: 15,
+                titel: "Automatisierter Korrekturassistent",
+                fach: "Chemie",
+                kiKat: "b",
+                stufe: "Alle",
+                typ: "🔧 Tool",
+                beschreibung: "Aufsätze korrigieren mit KI",
                 link: "https://wilski54.github.io/AutometdTest/",
                 kurzFeatures: ["Automatische Korrektur", "Feedback-Generator", "Zeitersparnis"],
                 langbeschreibung: "KI-Tool zur automatisierten Korrektur und Bewertung von Texten mit detailliertem Feedback.",
@@ -866,13 +878,14 @@
                 lernziele: ["Lehrkräfte entlasten", "Schnelles Feedback für Schüler", "Objektive Bewertung"],
                 einsatz: "Zur Korrektur von Tests, Aufsätzen und Protokollen."
             },
-            { 
-                titel: "Digitaler Diskussionspartner", 
-                fach: "Übergreifend", 
-                kiKat: "b", 
-                stufe: "8-10", 
-                typ: "🤖 KI-Assistent", 
-                beschreibung: "Fach-Präsentationen - Diskussionspartner", 
+            {
+                id: 16,
+                titel: "Digitaler Diskussionspartner",
+                fach: "Übergreifend",
+                kiKat: "b",
+                stufe: "8-10",
+                typ: "🤖 KI-Assistent",
+                beschreibung: "Fach-Präsentationen - Diskussionspartner",
                 link: "https://drwk4.pythonanywhere.com/",
                 kurzFeatures: ["Diskussions-Training", "Argument-Feedback", "Rhetorik-Tipps"],
                 langbeschreibung: "KI-gestützter Diskussionspartner zur Vorbereitung auf Präsentationen und Debatten.",
@@ -880,13 +893,14 @@
                 lernziele: ["Argumentieren lernen", "Präsentations-Kompetenz", "Selbstsicher auftreten"],
                 einsatz: "Zur Vorbereitung auf Präsentationen, Prüfungen und Debatten."
             },
-            { 
-                titel: "Kooperatives Lernsystem", 
-                fach: "Übergreifend", 
-                kiKat: "c", 
-                stufe: "Alle", 
-                typ: "🔧 Tool", 
-                beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit", 
+            {
+                id: 17,
+                titel: "Kooperatives Lernsystem",
+                fach: "Übergreifend",
+                kiKat: "c",
+                stufe: "Alle",
+                typ: "🔧 Tool",
+                beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit",
                 link: "https://wilski54.github.io/kolaborativ/",
                 kurzFeatures: ["Echtzeit-Kollaboration", "Gruppen-Management", "Fortschritt-Tracking"],
                 langbeschreibung: "Kooperatives Lernsystem für synchrone Gruppenarbeit mit Echtzeit-Kommunikation.",
@@ -894,13 +908,14 @@
                 lernziele: ["Teamarbeit fördern", "Gemeinsam Probleme lösen", "Kommunikation verbessern"],
                 einsatz: "Für Gruppenarbeiten, Projekte und kooperative Lernformen."
             },
-            { 
-                titel: "Interview mit Zeitzeugen", 
-                fach: "GL", 
-                kiKat: "b", 
-                stufe: "8-10", 
-                typ: "🎥 Multimedia", 
-                beschreibung: "Interaktive historische Interviews", 
+            {
+                id: 18,
+                titel: "Interview mit Zeitzeugen",
+                fach: "GL",
+                kiKat: "b",
+                stufe: "8-10",
+                typ: "🎥 Multimedia",
+                beschreibung: "Interaktive historische Interviews",
                 link: "https://wilski54.github.io/Essam_KI_2/",
                 kurzFeatures: ["Authentische Interviews", "Interaktive Fragen", "Historischer Kontext"],
                 langbeschreibung: "Interaktive Zeitzeugen-Interviews zu historischen Ereignissen mit Kontextinformationen.",
@@ -908,13 +923,14 @@
                 lernziele: ["Zeitgeschichte verstehen", "Quellen kritisch bewerten", "Empathie entwickeln"],
                 einsatz: "Für Geschichtsunterricht und Projekt-Arbeit."
             },
-            { 
-                titel: "Automatisches Feedback", 
-                fach: "GL", 
-                kiKat: "b", 
-                stufe: "8-10", 
-                typ: "📄 Arbeitsblatt", 
-                beschreibung: "Durch KI generiertes Feedback auf Schülereingaben", 
+            {
+                id: 19,
+                titel: "Automatisches Feedback",
+                fach: "GL",
+                kiKat: "b",
+                stufe: "8-10",
+                typ: "📄 Arbeitsblatt",
+                beschreibung: "Durch KI generiertes Feedback auf Schülereingaben",
                 link: "https://wilski54.github.io/automte_response/",
                 kurzFeatures: ["Sofort-Feedback", "Individuelle Rückmeldung", "Lernfortschritt"],
                 langbeschreibung: "System für automatisiertes, individuelles Feedback auf Schülerantworten.",
@@ -924,7 +940,6 @@
             }
         ];
 
-        // Rest des Codes...
         const faecher = [...new Set(materials.map(m => m.fach))].sort();
         const stufen = [...new Set(materials.map(m => m.stufe))].sort();
         const typen = [...new Set(materials.map(m => m.typ))].sort();
@@ -954,55 +969,21 @@
             typSelect.appendChild(option);
         });
 
-        function flipCard(index) {
-            const card = document.getElementById(`card-${index}`);
-            card.classList.toggle('flipped');
+        function flipCard(id) {
+            const card = document.getElementById('card-' + id);
+            if (card) {
+                card.classList.toggle('flipped');
+            }
         }
 
-        function openModal(material) {
-            const fachClass = `fach-${material.fach.toLowerCase().replace('ü', 'ue')}`;
+        function openModal(materialId) {
+            const material = materials.find(m => m.id === materialId);
+            if (!material) return;
+            
+            const fachClass = 'fach-' + material.fach.toLowerCase().replace('ü', 'ue');
             const modalBody = document.getElementById('modalBody');
             
-            modalBody.innerHTML = `
-                <div class="modal-header">
-                    <h2>${material.titel}</h2>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span class="tag tag-fach ${fachClass}">${material.fach}</span>
-                        <span class="tag tag-stufe">${material.stufe}</span>
-                        <span class="tag tag-ki-${material.kiKat}">${material.kiKat.toUpperCase()}</span>
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <p><strong>${material.langbeschreibung}</strong></p>
-                </div>
-
-                <div class="modal-section">
-                    <h3>✨ Funktionen</h3>
-                    <ul>
-                        ${material.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <div class="modal-section">
-                    <h3>🎯 Lernziele</h3>
-                    <ul>
-                        ${material.lernziele.map(l => `<li>${l}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <div class="modal-section">
-                    <h3>💡 Einsatz im Unterricht</h3>
-                    <p>${material.einsatz}</p>
-                </div>
-
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" onclick="closeModal()">← Zurück</button>
-                    <a href="${material.link}" target="_blank" class="btn btn-primary btn-large">
-                        🚀 Material öffnen
-                    </a>
-                </div>
-            `;
+            modalBody.innerHTML = '<div class="modal-header"><h2>' + material.titel + '</h2><div style="display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="tag tag-fach ' + fachClass + '">' + material.fach + '</span><span class="tag tag-stufe">' + material.stufe + '</span><span class="tag tag-ki-' + material.kiKat + '">' + material.kiKat.toUpperCase() + '</span></div></div><div class="modal-section"><p><strong>' + material.langbeschreibung + '</strong></p></div><div class="modal-section"><h3>✨ Funktionen</h3><ul>' + material.features.map(f => '<li>' + f + '</li>').join('') + '</ul></div><div class="modal-section"><h3>🎯 Lernziele</h3><ul>' + material.lernziele.map(l => '<li>' + l + '</li>').join('') + '</ul></div><div class="modal-section"><h3>💡 Einsatz im Unterricht</h3><p>' + material.einsatz + '</p></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">← Zurück</button><a href="' + material.link + '" target="_blank" class="btn btn-primary btn-large">🚀 Material öffnen</a></div>';
             
             document.getElementById('modal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1019,7 +1000,6 @@
             }
         }
 
-        // ESC-Taste zum Schließen
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
@@ -1077,40 +1057,10 @@
                 noResults.style.display = 'none';
             }
 
-            grid.innerHTML = filtered.map((m, index) => {
-                const fachClass = `fach-${m.fach.toLowerCase().replace('ü', 'ue')}`;
+            grid.innerHTML = filtered.map(m => {
+                const fachClass = 'fach-' + m.fach.toLowerCase().replace('ü', 'ue');
                 
-                return `
-                    <div class="card-flip-container" id="card-${index}">
-                        <div class="card-flipper">
-                            <!-- Vorderseite -->
-                            <div class="card-front" onclick="flipCard(${index})">
-                                <h3 class="card-title">${m.titel}</h3>
-                                <p class="card-description">${m.beschreibung}</p>
-                                <div class="card-tags">
-                                    <span class="tag tag-fach ${fachClass}">${m.fach}</span>
-                                    <span class="tag tag-stufe">${m.stufe}</span>
-                                    <span class="tag tag-ki-${m.kiKat}">${m.kiKat.toUpperCase()}</span>
-                                </div>
-                                <div class="card-bg-icon ${fachClass}" aria-hidden="true"></div>
-                            </div>
-
-                            <!-- Rückseite -->
-                            <div class="card-back">
-                                <h3>Kurzübersicht</h3>
-                                <div class="features">
-                                    <ul>
-                                        ${m.kurzFeatures.map(f => `<li>${f}</li>`).join('')}
-                                    </ul>
-                                </div>
-                                <div class="buttons">
-                                    <button class="btn btn-secondary" onclick="event.stopPropagation(); flipCard(${index})">Zurück</button>
-                                    <button class="btn btn-primary" onclick="event.stopPropagation(); openModal(materials[${index}])">Mehr erfahren</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                return '<div class="card-flip-container" id="card-' + m.id + '"><div class="card-flipper"><div class="card-front" onclick="flipCard(' + m.id + ')"><h3 class="card-title">' + m.titel + '</h3><p class="card-description">' + m.beschreibung + '</p><div class="card-tags"><span class="tag tag-fach ' + fachClass + '">' + m.fach + '</span><span class="tag tag-stufe">' + m.stufe + '</span><span class="tag tag-ki-' + m.kiKat + '">' + m.kiKat.toUpperCase() + '</span></div><div class="card-bg-icon ' + fachClass + '" aria-hidden="true"></div></div><div class="card-back"><h3>Kurzübersicht</h3><div class="features"><ul>' + m.kurzFeatures.map(f => '<li>' + f + '</li>').join('') + '</ul></div><div class="buttons"><button class="btn btn-secondary" onclick="event.stopPropagation(); flipCard(' + m.id + ')">Zurück</button><button class="btn btn-primary" onclick="event.stopPropagation(); openModal(' + m.id + ')">Mehr erfahren</button></div></div></div></div>';
             }).join('');
 
             document.getElementById('count').textContent = filtered.length;
