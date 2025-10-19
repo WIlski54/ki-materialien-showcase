@@ -33,10 +33,14 @@ def requires_auth(f):
 def index():
     return send_from_directory('.', 'index.html')
 
-@app.route('/<path:path>')
+# --- KORRIGIERTE ROUTE FÜR STATIC-DATEIEN ---
+# Diese Route fängt Anfragen an /static/ ab (z.B. /static/chemie.png)
+# und wendet den Passwortschutz darauf an.
+@app.route('/static/<path:filename>')
 @requires_auth
-def serve_file(path):
-    return send_from_directory('.', path)
+def serve_static(filename):
+    # Sie sucht im Ordner 'static' nach der angeforderten Datei
+    return send_from_directory('static', filename)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 10000))
