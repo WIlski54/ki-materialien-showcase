@@ -178,16 +178,15 @@
             gap: 1rem;
             margin-bottom: 1rem;
         }
-
-
+        
         /* --- MODIFIZIERT: Wasserzeichen-Icon (Größer, Stärker, Bunt) --- */
         .card-bg-icon {
             position: absolute;
             bottom: 0.5rem;
             right: 1rem;
-            width: 130px; /* --- Geändert: Größer --- */
-            height: 130px; /* --- Geändert: Größer --- */
-            opacity: 0.3; /* --- Geändert: Stärker sichtbar --- */
+            width: 130px; 
+            height: 130px; 
+            opacity: 0.3; 
             pointer-events: none; 
             
             /* Masken-Eigenschaften */
@@ -200,50 +199,52 @@
             
             /* Standard-Icon & Farbe (Fallback) */
             background-color: #4b5563; /* Grau */
-            -webkit-mask-image: url('static/uebergreifend.png');
-            mask-image: url('static/uebergreifend.png');
+            
+            /* --- KORRIGIERTER PFAD --- */
+            -webkit-mask-image: url('/static/uebergreifend.png');
+            mask-image: url('/static/uebergreifend.png');
         }
 
         /* --- NEU: Fach-spezifische Farben & Icons --- */
         .card-bg-icon.fach-chemie {
             background-color: #dc2626; /* Rot */
-            -webkit-mask-image: url('static/chemie.png');
-            mask-image: url('static/chemie.png');
+            -webkit-mask-image: url('/static/chemie.png');
+            mask-image: url('/static/chemie.png');
         }
         .card-bg-icon.fach-biologie {
             background-color: #15803d; /* Dunkelgrün */
-            -webkit-mask-image: url('static/bio.png');
-            mask-image: url('static/bio.png');
+            -webkit-mask-image: url('/static/bio.png');
+            mask-image: url('/static/bio.png');
         }
         .card-bg-icon.fach-mathematik {
             background-color: #2563eb; /* Blau */
-            -webkit-mask-image: url('static/mathe.png');
-            mask-image: url('static/mathe.png');
+            -webkit-mask-image: url('/static/mathe.png');
+            mask-image: url('/static/mathe.png');
         }
         .card-bg-icon.fach-ki {
             background-color: #0d9488; /* Türkis/Teal */
-            -webkit-mask-image: url('static/ki.png');
-            mask-image: url('static/ki.png');
+            -webkit-mask-image: url('/static/ki.png');
+            mask-image: url('/static/ki.png');
         }
         .card-bg-icon.fach-deutsch {
             background-color: #f97316; /* Orange */
-            -webkit-mask-image: url('static/deutsch.png');
-            mask-image: url('static/deutsch.png');
+            -webkit-mask-image: url('/static/deutsch.png');
+            mask-image: url('/static/deutsch.png');
         }
         .card-bg-icon.fach-englisch {
             background-color: #7c3aed; /* Lila */
-            -webkit-mask-image: url('static/englisch.png');
-            mask-image: url('static/englisch.png');
+            -webkit-mask-image: url('/static/englisch.png');
+            mask-image: url('/static/englisch.png');
         }
         .card-bg-icon.fach-gl {
             background-color: #78350f; /* Braun */
-            -webkit-mask-image: url('static/gl.png');
-            mask-image: url('static/gl.png');
+            -webkit-mask-image: url('/static/gl.png');
+            mask-image: url('/static/gl.png');
         }
         .card-bg-icon.fach-uebergreifend {
             background-color: #4b5563; /* Grau */
-            -webkit-mask-image: url('static/uebergreifend.png');
-            mask-image: url('static/uebergreifend.png');
+            -webkit-mask-image: url('/static/uebergreifend.png');
+            mask-image: url('/static/uebergreifend.png');
         }
 
         .card-title {
@@ -530,8 +531,6 @@
             option.textContent = t;
             typSelect.appendChild(option);
         });
-
-        // --- ENTFERNT: iconMap wird nicht mehr benötigt ---
         
         function renderMaterials() {
             const fachFilter = document.getElementById('filterFach').value;
