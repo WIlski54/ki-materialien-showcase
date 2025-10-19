@@ -179,72 +179,44 @@
             margin-bottom: 1rem;
         }
         
-        /* --- MODIFIZIERT: Wasserzeichen-Icon (Größer, Stärker, Bunt) --- */
+        /* KORRIGIERT: Hintergrundbild statt Maske */
         .card-bg-icon {
             position: absolute;
             bottom: 0.5rem;
             right: 1rem;
             width: 130px; 
             height: 130px; 
-            opacity: 0.3; 
-            pointer-events: none; 
-            
-            /* Masken-Eigenschaften */
-            -webkit-mask-size: contain;
-            mask-size: contain;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            -webkit-mask-position: center;
-            mask-position: center;
-            
-            /* Standard-Icon & Farbe (Fallback) */
-            background-color: #4b5563; /* Grau */
-            
-            /* --- KORRIGIERTER PFAD --- */
-            -webkit-mask-image: url('/static/uebergreifend.png');
-            mask-image: url('/static/uebergreifend.png');
+            opacity: 0.15; 
+            pointer-events: none;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
-        /* --- NEU: Fach-spezifische Farben & Icons --- */
+        /* Fach-spezifische Icons als Hintergrundbilder */
         .card-bg-icon.fach-chemie {
-            background-color: #dc2626; /* Rot */
-            -webkit-mask-image: url('/static/chemie.png');
-            mask-image: url('/static/chemie.png');
+            background-image: url('/static/chemie.png');
         }
         .card-bg-icon.fach-biologie {
-            background-color: #15803d; /* Dunkelgrün */
-            -webkit-mask-image: url('/static/bio.png');
-            mask-image: url('/static/bio.png');
+            background-image: url('/static/bio.png');
         }
         .card-bg-icon.fach-mathematik {
-            background-color: #2563eb; /* Blau */
-            -webkit-mask-image: url('/static/mathe.png');
-            mask-image: url('/static/mathe.png');
+            background-image: url('/static/mathe.png');
         }
         .card-bg-icon.fach-ki {
-            background-color: #0d9488; /* Türkis/Teal */
-            -webkit-mask-image: url('/static/ki.png');
-            mask-image: url('/static/ki.png');
+            background-image: url('/static/ki.png');
         }
         .card-bg-icon.fach-deutsch {
-            background-color: #f97316; /* Orange */
-            -webkit-mask-image: url('/static/deutsch.png');
-            mask-image: url('/static/deutsch.png');
+            background-image: url('/static/deutsch.png');
         }
         .card-bg-icon.fach-englisch {
-            background-color: #7c3aed; /* Lila */
-            -webkit-mask-image: url('/static/englisch.png');
-            mask-image: url('/static/englisch.png');
+            background-image: url('/static/englisch.png');
         }
         .card-bg-icon.fach-gl {
-            background-color: #78350f; /* Braun */
-            -webkit-mask-image: url('/static/gl.png');
-            mask-image: url('/static/gl.png');
+            background-image: url('/static/gl.png');
         }
         .card-bg-icon.fach-uebergreifend {
-            background-color: #4b5563; /* Grau */
-            -webkit-mask-image: url('/static/uebergreifend.png');
-            mask-image: url('/static/uebergreifend.png');
+            background-image: url('/static/uebergreifend.png');
         }
 
         .card-title {
@@ -267,7 +239,6 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
-            /* --- NEU: Z-Index --- */
             position: relative;
             z-index: 2;
         }
@@ -316,7 +287,6 @@
             text-decoration: none;
             font-size: 0.875rem;
             transition: all 0.2s;
-            /* --- NEU: Z-Index --- */
             position: relative;
             z-index: 2;
         }
@@ -484,22 +454,22 @@
             { titel: "Mendelsche Gesetze I", fach: "Biologie", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Vererbungsregeln - Interaktive Worksheet", link: "https://wilski54.github.io/Vererbung_1/" },
             { titel: "Digitaler Lern-Assistent", fach: "KI", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "GSM - Automatisiertes Tutorsystem", link: "https://wilski54.github.io/KI-Assisten/" },
             { titel: "Interaktive Zuordnungsübung", fach: "GL", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Fragen zu Zeitzeugen", link: "https://wilski54.github.io/Europa2/" },
-            { titel: "Texte lesen und verstehen", fach: "Deutsch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "KI-unterstütztes Leseverstehen", link: "https.wilski54.github.io/Texte_lesen/" },
-            { titel: "Memory (London)", fach: "Englisch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "London Memory Game", link: "https.wilski54.github.io/memory/" },
-            { titel: "Lineare Funktionen", fach: "Mathematik", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Funktionen interaktiv", link: "https.wilski54.github.io/Lineare_Funktionen_Interaktiv/" },
-            { titel: "Übungen zur Aussprache", fach: "Übergreifend", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Hä? - Sprachübungen", link: "https.wilski54.github.io/ausprache/" },
-            { titel: "KI AG", fach: "Übergreifend", kiKat: "a", stufe: "Alle", typ: "🎥 Multimedia", beschreibung: "Programmieren lernen mit KI", link: "https.wilski54.github.io/Arcade80/" },
-            { titel: "Vorlage Versuchsprotokoll", fach: "Chemie", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Strukturierte Vorlage für Experimente", link: "https.wilski54.github.io/Versuchsprotokoll_WK/" },
-            { titel: "Das Lichtmikroskop", fach: "Biologie", kiKat: "a", stufe: "5-7", typ: "📄 Arbeitsblatt", beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter", link: "https.wilski54.github.io/microscop/" },
-            { titel: "Individuelle Aufgabenstellung", fach: "Deutsch", kiKat: "a", stufe: "Alle", typ: "📄 Arbeitsblatt", beschreibung: "KI-generierte individuelle Texte", link: "https.wilski54.github.io/Level_Wohen/" },
-            { titel: "DialogLab", fach: "Englisch", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "Dialog üben mit KI-Feedback", link: "https.wilski54.github.io/LearningLab/" },
-            { titel: "Das magische Labyrinth ARITHMA", fach: "Mathematik", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Die Multiplikation für Kinder", link: "https.wilski54.github.io/arithma10/" },
-            { titel: "Rechenwege mit KI Assistent", fach: "Mathematik", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Schritt-für-Schritt Rechenwege", link: "https.wilski54.github.io/Matheassitent/" },
-            { titel: "Automatisierter Korrekturassistent", fach: "Chemie", kiKat: "b", stufe: "Alle", typ: "🔧 Tool", beschreibung: "Aufsätze korrigieren mit KI", link: "https.wilski54.github.io/AutometdTest/" },
-            { titel: "Digitaler Diskussionspartner", fach: "Übergreifend", kiKat: "b", stufe: "8-10", typ: "🤖 KI-Assistent", beschreibung: "Fach-Präsentationen - Diskussionspartner", link: "https.drwk4.pythonanywhere.com/" },
-            { titel: "Kooperatives Lernsystem", fach: "Übergreifend", kiKat: "c", stufe: "Alle", typ: "🔧 Tool", beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit", link: "https.wilski54.github.io/kolaborativ/" },
-            { titel: "Interview mit Zeitzeugen", fach: "GL", kiKat: "b", stufe: "8-10", typ: "🎥 Multimedia", beschreibung: "Interaktive historische Interviews", link: "https.wilski54.github.io/Essam_KI_2/" },
-            { titel: "Automatisches Feedback", fach: "GL", kiKat: "b", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Durch KI generiertes Feedback auf Schülereingaben", link: "https.wilski54.github.io/automte_response/" }
+            { titel: "Texte lesen und verstehen", fach: "Deutsch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "KI-unterstütztes Leseverstehen", link: "https://wilski54.github.io/Texte_lesen/" },
+            { titel: "Memory (London)", fach: "Englisch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "London Memory Game", link: "https://wilski54.github.io/memory/" },
+            { titel: "Lineare Funktionen", fach: "Mathematik", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Funktionen interaktiv", link: "https://wilski54.github.io/Lineare_Funktionen_Interaktiv/" },
+            { titel: "Übungen zur Aussprache", fach: "Übergreifend", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Hä? - Sprachübungen", link: "https://wilski54.github.io/ausprache/" },
+            { titel: "KI AG", fach: "Übergreifend", kiKat: "a", stufe: "Alle", typ: "🎥 Multimedia", beschreibung: "Programmieren lernen mit KI", link: "https://wilski54.github.io/Arcade80/" },
+            { titel: "Vorlage Versuchsprotokoll", fach: "Chemie", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Strukturierte Vorlage für Experimente", link: "https://wilski54.github.io/Versuchsprotokoll_WK/" },
+            { titel: "Das Lichtmikroskop", fach: "Biologie", kiKat: "a", stufe: "5-7", typ: "📄 Arbeitsblatt", beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter", link: "https://wilski54.github.io/microscop/" },
+            { titel: "Individuelle Aufgabenstellung", fach: "Deutsch", kiKat: "a", stufe: "Alle", typ: "📄 Arbeitsblatt", beschreibung: "KI-generierte individuelle Texte", link: "https://wilski54.github.io/Level_Wohen/" },
+            { titel: "DialogLab", fach: "Englisch", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "Dialog üben mit KI-Feedback", link: "https://wilski54.github.io/LearningLab/" },
+            { titel: "Das magische Labyrinth ARITHMA", fach: "Mathematik", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Die Multiplikation für Kinder", link: "https://wilski54.github.io/arithma10/" },
+            { titel: "Rechenwege mit KI Assistent", fach: "Mathematik", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Schritt-für-Schritt Rechenwege", link: "https://wilski54.github.io/Matheassitent/" },
+            { titel: "Automatisierter Korrekturassistent", fach: "Chemie", kiKat: "b", stufe: "Alle", typ: "🔧 Tool", beschreibung: "Aufsätze korrigieren mit KI", link: "https://wilski54.github.io/AutometdTest/" },
+            { titel: "Digitaler Diskussionspartner", fach: "Übergreifend", kiKat: "b", stufe: "8-10", typ: "🤖 KI-Assistent", beschreibung: "Fach-Präsentationen - Diskussionspartner", link: "https://drwk4.pythonanywhere.com/" },
+            { titel: "Kooperatives Lernsystem", fach: "Übergreifend", kiKat: "c", stufe: "Alle", typ: "🔧 Tool", beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit", link: "https://wilski54.github.io/kolaborativ/" },
+            { titel: "Interview mit Zeitzeugen", fach: "GL", kiKat: "b", stufe: "8-10", typ: "🎥 Multimedia", beschreibung: "Interaktive historische Interviews", link: "https://wilski54.github.io/Essam_KI_2/" },
+            { titel: "Automatisches Feedback", fach: "GL", kiKat: "b", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Durch KI generiertes Feedback auf Schülereingaben", link: "https://wilski54.github.io/automte_response/" }
         ];
 
         // Populate filters
@@ -572,7 +542,6 @@
                 return a.titel.localeCompare(b.titel);
             });
 
-
             const grid = document.getElementById('materialsGrid');
             const noResults = document.getElementById('noResults');
             
@@ -584,9 +553,7 @@
                 noResults.style.display = 'none';
             }
 
-            // --- MODIFIZIERT: Kachel-HTML mit CSS-Klasse statt <img> ---
             grid.innerHTML = filtered.map(m => {
-                // Erzeugt einen CSS-Klassennamen (z.B. "fach-biologie" oder "fach-uebergreifend")
                 const fachClass = `fach-${m.fach.toLowerCase().replace('ü', 'ue')}`;
                 
                 return `
