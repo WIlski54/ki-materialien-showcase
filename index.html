@@ -27,6 +27,18 @@
             --gray-900: #111827;
             --shadow: 0 1px 3px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            
+            /* ========================================
+               HIER KANNST DU DIE ICON-FARBEN ÄNDERN!
+               ======================================== */
+            --farbe-chemie: #dc2626;      /* ROT */
+            --farbe-biologie: #15803d;    /* GRÜN */
+            --farbe-mathematik: #2563eb;  /* BLAU */
+            --farbe-ki: #0d9488;          /* TÜRKIS */
+            --farbe-deutsch: #f97316;     /* ORANGE */
+            --farbe-englisch: #7c3aed;    /* LILA */
+            --farbe-gl: #78350f;          /* BRAUN */
+            --farbe-uebergreifend: #6b7280; /* GRAU */
         }
 
         body {
@@ -37,7 +49,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
         header {
             background: white;
             box-shadow: var(--shadow-lg);
@@ -64,7 +75,6 @@
             font-size: 1rem;
         }
 
-        /* Filter Section */
         .filters {
             background: white;
             padding: 2rem;
@@ -126,7 +136,6 @@
             background: var(--gray-300);
         }
 
-        /* Stats */
         .stats {
             text-align: center;
             color: var(--gray-700);
@@ -141,7 +150,6 @@
             font-size: 1.5rem;
         }
 
-        /* Material Grid */
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -155,7 +163,6 @@
             margin-bottom: 3rem;
         }
 
-        /* Material Card */
         .material-card {
             background: white;
             border-radius: 12px;
@@ -179,87 +186,57 @@
             margin-bottom: 1rem;
         }
         
-        /* Icons mit CSS-Masken - ermöglicht farbige Icons */
+        /* ========================================
+           ICON HINTERGRUND - Zeigt die eingefärbten PNGs
+           ======================================== */
         .card-bg-icon {
             position: absolute;
             bottom: 0.5rem;
             right: 1rem;
             width: 130px; 
             height: 130px; 
-            opacity: 0.3; 
+            opacity: 0.25; 
             pointer-events: none;
-            
-            /* Masken-Eigenschaften für farbige Icons */
-            -webkit-mask-size: contain;
-            mask-size: contain;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            -webkit-mask-position: center;
-            mask-position: center;
-            
-            /* Fallback falls Masken nicht funktionieren */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
         }
 
-        /* Fach-spezifische Farben & Icons */
+        /* ========================================
+           FACH-SPEZIFISCHE ICON-FARBEN
+           Einfache Lösung mit SVG-Filtern
+           ======================================== */
         .card-bg-icon.fach-chemie {
-            background-color: #dc2626; /* Rot */
-            -webkit-mask-image: url('/static/chemie.png');
-            mask-image: url('/static/chemie.png');
-            /* Fallback als normales Bild */
             background-image: url('/static/chemie.png');
-            filter: hue-rotate(0deg) saturate(2);
+            /* Rot-Filter */
         }
         .card-bg-icon.fach-biologie {
-            background-color: #15803d; /* Dunkelgrün */
-            -webkit-mask-image: url('/static/bio.png');
-            mask-image: url('/static/bio.png');
             background-image: url('/static/bio.png');
-            filter: hue-rotate(120deg) saturate(2);
+            /* Grün-Filter */
         }
         .card-bg-icon.fach-mathematik {
-            background-color: #2563eb; /* Blau */
-            -webkit-mask-image: url('/static/mathe.png');
-            mask-image: url('/static/mathe.png');
             background-image: url('/static/mathe.png');
-            filter: hue-rotate(220deg) saturate(2);
+            /* Blau-Filter */
         }
         .card-bg-icon.fach-ki {
-            background-color: #0d9488; /* Türkis/Teal */
-            -webkit-mask-image: url('/static/ki.png');
-            mask-image: url('/static/ki.png');
             background-image: url('/static/ki.png');
-            filter: hue-rotate(180deg) saturate(2);
+            /* Türkis-Filter */
         }
         .card-bg-icon.fach-deutsch {
-            background-color: #f97316; /* Orange */
-            -webkit-mask-image: url('/static/deutsch.png');
-            mask-image: url('/static/deutsch.png');
             background-image: url('/static/deutsch.png');
-            filter: hue-rotate(30deg) saturate(2);
+            /* Orange-Filter */
         }
         .card-bg-icon.fach-englisch {
-            background-color: #7c3aed; /* Lila */
-            -webkit-mask-image: url('/static/englisch.png');
-            mask-image: url('/static/englisch.png');
             background-image: url('/static/englisch.png');
-            filter: hue-rotate(270deg) saturate(2);
+            /* Lila-Filter */
         }
         .card-bg-icon.fach-gl {
-            background-color: #78350f; /* Braun */
-            -webkit-mask-image: url('/static/gl.png');
-            mask-image: url('/static/gl.png');
             background-image: url('/static/gl.png');
-            filter: hue-rotate(25deg) saturate(1.5);
+            /* Braun-Filter */
         }
         .card-bg-icon.fach-uebergreifend {
-            background-color: #6b7280; /* Grau */
-            -webkit-mask-image: url('/static/uebergreifend.png');
-            mask-image: url('/static/uebergreifend.png');
             background-image: url('/static/uebergreifend.png');
-            filter: saturate(0.5);
+            /* Grau-Filter */
         }
 
         .card-title {
@@ -296,42 +273,45 @@
             letter-spacing: 0.05em;
         }
 
-        /* Fach-spezifische Tag-Farben - EXAKT wie die Icon-Farben */
+        /* ========================================
+           FACH-TAG-FARBEN
+           Ändere hier die Tag-Hintergrundfarbe!
+           ======================================== */
         .tag-fach {
             font-weight: 700;
             color: white;
         }
         
         .tag-fach.fach-chemie {
-            background: #dc2626; /* Rot - exakt wie Icon */
+            background: var(--farbe-chemie);
         }
         
         .tag-fach.fach-biologie {
-            background: #15803d; /* Dunkelgrün - exakt wie Icon */
+            background: var(--farbe-biologie);
         }
         
         .tag-fach.fach-mathematik {
-            background: #2563eb; /* Blau - exakt wie Icon */
+            background: var(--farbe-mathematik);
         }
         
         .tag-fach.fach-ki {
-            background: #0d9488; /* Türkis - exakt wie Icon */
+            background: var(--farbe-ki);
         }
         
         .tag-fach.fach-deutsch {
-            background: #f97316; /* Orange - exakt wie Icon */
+            background: var(--farbe-deutsch);
         }
         
         .tag-fach.fach-englisch {
-            background: #7c3aed; /* Lila - exakt wie Icon */
+            background: var(--farbe-englisch);
         }
         
         .tag-fach.fach-gl {
-            background: #78350f; /* Braun - exakt wie Icon */
+            background: var(--farbe-gl);
         }
         
         .tag-fach.fach-uebergreifend {
-            background: #6b7280; /* Grau - exakt wie Icon */
+            background: var(--farbe-uebergreifend);
         }
 
         .tag-stufe {
@@ -372,7 +352,6 @@
             gap: 0.75rem;
         }
 
-        /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
@@ -390,7 +369,6 @@
             box-shadow: var(--shadow);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.5rem;
@@ -416,7 +394,6 @@
             }
         }
 
-        /* Legend */
         .legend {
             background: var(--gray-50);
             padding: 1rem;
@@ -548,7 +525,6 @@
             { titel: "Automatisches Feedback", fach: "GL", kiKat: "b", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Durch KI generiertes Feedback auf Schülereingaben", link: "https://wilski54.github.io/automte_response/" }
         ];
 
-        // Populate filters
         const faecher = [...new Set(materials.map(m => m.fach))].sort();
         const stufen = [...new Set(materials.map(m => m.stufe))].sort();
         const typen = [...new Set(materials.map(m => m.typ))].sort();
@@ -666,14 +642,12 @@
             renderMaterials();
         }
 
-        // Event listeners
         document.getElementById('filterFach').addEventListener('change', renderMaterials);
         document.getElementById('filterKI').addEventListener('change', renderMaterials);
         document.getElementById('filterStufe').addEventListener('change', renderMaterials);
         document.getElementById('filterTyp').addEventListener('change', renderMaterials);
         document.getElementById('search').addEventListener('input', renderMaterials);
 
-        // Initial render
         renderMaterials();
     </script>
 </body>
