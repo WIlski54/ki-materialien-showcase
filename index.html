@@ -164,7 +164,7 @@
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
-            overflow: hidden; /* Wichtig für das positionierte Icon */
+            overflow: hidden; 
         }
 
         .material-card:hover {
@@ -179,19 +179,71 @@
             margin-bottom: 1rem;
         }
 
-        /* --- ENTFERNT --- */
-        /* .card-icon & .card-icon-img Stile wurden entfernt */
 
-        /* --- NEU: Wasserzeichen-Icon --- */
+        /* --- MODIFIZIERT: Wasserzeichen-Icon (Größer, Stärker, Bunt) --- */
         .card-bg-icon {
             position: absolute;
-            bottom: 1rem;
-            right: 1.5rem;
-            width: 100px; /* Größe anpassen nach Wunsch */
-            height: 100px;
-            opacity: 0.15; /* Transparenz */
-            pointer-events: none; /* Macht das Icon "nicht klickbar" */
-            object-fit: contain;
+            bottom: 0.5rem;
+            right: 1rem;
+            width: 130px; /* --- Geändert: Größer --- */
+            height: 130px; /* --- Geändert: Größer --- */
+            opacity: 0.3; /* --- Geändert: Stärker sichtbar --- */
+            pointer-events: none; 
+            
+            /* Masken-Eigenschaften */
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            
+            /* Standard-Icon & Farbe (Fallback) */
+            background-color: #4b5563; /* Grau */
+            -webkit-mask-image: url('static/uebergreifend.png');
+            mask-image: url('static/uebergreifend.png');
+        }
+
+        /* --- NEU: Fach-spezifische Farben & Icons --- */
+        .card-bg-icon.fach-chemie {
+            background-color: #dc2626; /* Rot */
+            -webkit-mask-image: url('static/chemie.png');
+            mask-image: url('static/chemie.png');
+        }
+        .card-bg-icon.fach-biologie {
+            background-color: #15803d; /* Dunkelgrün */
+            -webkit-mask-image: url('static/bio.png');
+            mask-image: url('static/bio.png');
+        }
+        .card-bg-icon.fach-mathematik {
+            background-color: #2563eb; /* Blau */
+            -webkit-mask-image: url('static/mathe.png');
+            mask-image: url('static/mathe.png');
+        }
+        .card-bg-icon.fach-ki {
+            background-color: #0d9488; /* Türkis/Teal */
+            -webkit-mask-image: url('static/ki.png');
+            mask-image: url('static/ki.png');
+        }
+        .card-bg-icon.fach-deutsch {
+            background-color: #f97316; /* Orange */
+            -webkit-mask-image: url('static/deutsch.png');
+            mask-image: url('static/deutsch.png');
+        }
+        .card-bg-icon.fach-englisch {
+            background-color: #7c3aed; /* Lila */
+            -webkit-mask-image: url('static/englisch.png');
+            mask-image: url('static/englisch.png');
+        }
+        .card-bg-icon.fach-gl {
+            background-color: #78350f; /* Braun */
+            -webkit-mask-image: url('static/gl.png');
+            mask-image: url('static/gl.png');
+        }
+        .card-bg-icon.fach-uebergreifend {
+            background-color: #4b5563; /* Grau */
+            -webkit-mask-image: url('static/uebergreifend.png');
+            mask-image: url('static/uebergreifend.png');
         }
 
         .card-title {
@@ -200,7 +252,6 @@
             color: var(--gray-900);
             margin-bottom: 0.5rem;
             line-height: 1.3;
-            /* Kein Einrücken mehr nötig, da das Icon weg ist */
         }
 
         .card-description {
@@ -215,6 +266,9 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
+            /* --- NEU: Z-Index --- */
+            position: relative;
+            z-index: 2;
         }
 
         .tag {
@@ -261,7 +315,7 @@
             text-decoration: none;
             font-size: 0.875rem;
             transition: all 0.2s;
-            /* Z-Index hinzufügen, damit es über dem Icon liegt (falls es überlappt) */
+            /* --- NEU: Z-Index --- */
             position: relative;
             z-index: 2;
         }
@@ -306,12 +360,11 @@
             .materials-grid {
                 grid-template-columns: 1fr;
             }
-
-            /* Icon auf Mobilgeräten ggf. kleiner machen */
+            
             .card-bg-icon {
-                width: 80px;
-                height: 80px;
-                right: 1rem;
+                width: 100px;
+                height: 100px;
+                right: 0.5rem;
                 bottom: 0.5rem;
             }
         }
@@ -478,18 +531,8 @@
             typSelect.appendChild(option);
         });
 
-        const iconMap = {
-            "Chemie": "static/chemie.png",
-            "Biologie": "static/bio.png",
-            "KI": "static/ki.png",
-            "GL": "static/gl.png",
-            "Deutsch": "static/deutsch.png",
-            "Englisch": "static/englisch.png",
-            "Mathematik": "static/mathe.png",
-            "Übergreifend": "static/uebergreifend.png"
-        };
-
-
+        // --- ENTFERNT: iconMap wird nicht mehr benötigt ---
+        
         function renderMaterials() {
             const fachFilter = document.getElementById('filterFach').value;
             const kiFilter = document.getElementById('filterKI').value;
@@ -542,9 +585,11 @@
                 noResults.style.display = 'none';
             }
 
-            // --- MODIFIZIERT: HTML-Struktur der Kachel ---
+            // --- MODIFIZIERT: Kachel-HTML mit CSS-Klasse statt <img> ---
             grid.innerHTML = filtered.map(m => {
-                const iconPath = iconMap[m.fach] || 'static/uebergreifend.png'; 
+                // Erzeugt einen CSS-Klassennamen (z.B. "fach-biologie" oder "fach-uebergreifend")
+                const fachClass = `fach-${m.fach.toLowerCase().replace('ü', 'ue')}`;
+                
                 return `
                     <div class="material-card" onclick="window.open('${m.link}', '_blank')">
                         <div class="card-header">
@@ -562,7 +607,7 @@
                             Material öffnen →
                         </a>
                         
-                        <img src="${iconPath}" alt="" class="card-bg-icon">
+                        <div class="card-bg-icon ${fachClass}" aria-hidden="true"></div>
                     </div>
                 `;
             }).join('');
