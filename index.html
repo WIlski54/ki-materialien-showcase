@@ -179,9 +179,22 @@
             margin-bottom: 1rem;
         }
 
+        /* --- MODIFIZIERT --- */
         .card-icon {
-            font-size: 2.5rem;
+            /* font-size: 2.5rem; */ /* Ersetzt durch feste Größe */
             flex-shrink: 0;
+            width: 40px; /* Feste Icon-Größe */
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* --- NEU --- */
+        .card-icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Stellt sicher, dass das Icon komplett sichtbar ist */
         }
 
         .card-title {
@@ -456,6 +469,20 @@
             typSelect.appendChild(option);
         });
 
+        // --- NEU: Icon-Mapping ---
+        // Stellt sicher, dass die Dateinamen mit deinen Dateien im 'static'-Ordner übereinstimmen
+        const iconMap = {
+            "Chemie": "static/chemie.png",
+            "Biologie": "static/bio.png",
+            "KI": "static/ki.png",
+            "GL": "static/gl.png",
+            "Deutsch": "static/deutsch.png",
+            "Englisch": "static/englisch.png",
+            "Mathematik": "static/mathe.png",
+            "Übergreifend": "static/uebergreifend.png"
+        };
+
+
         function renderMaterials() {
             const fachFilter = document.getElementById('filterFach').value;
             const kiFilter = document.getElementById('filterKI').value;
@@ -486,12 +513,16 @@
                 noResults.style.display = 'none';
             }
 
+            // --- MODIFIZIERT: Icon-Logik ---
             grid.innerHTML = filtered.map(m => {
-                const icon = m.typ.split(' ')[0];
+                // const icon = m.typ.split(' ')[0]; // Ersetzt durch Fach-Icon
+                const iconPath = iconMap[m.fach] || 'static/uebergreifend.png'; // Fallback auf 'Übergreifend'
                 return `
                     <div class="material-card" onclick="window.open('${m.link}', '_blank')">
                         <div class="card-header">
-                            <div class="card-icon">${icon}</div>
+                            <div class="card-icon">
+                                <img src="${iconPath}" alt="${m.fach} Icon" class="card-icon-img">
+                            </div>
                             <div style="flex: 1;">
                                 <h3 class="card-title">${m.titel}</h3>
                             </div>
