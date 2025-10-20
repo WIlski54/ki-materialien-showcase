@@ -546,6 +546,49 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+
+            .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* ← HIER DEN NEUEN CODE EINFÜGEN */
+        .modal-body-wrapper {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .modal-text-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .modal-image-content {
+            flex: 0 0 300px;
+            position: sticky;
+            top: 1rem;
+        }
+
+        .modal-image-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--gray-200);
+        }
+
+        @media (max-width: 768px) {
+            .modal-body-wrapper {
+                flex-direction: column;
+            }
+            
+            .modal-image-content {
+                flex: 0 0 auto;
+                width: 100%;
+                position: relative;
+            }
         }
     </style>
 </head>
@@ -877,6 +920,7 @@
                 features: ["Automatische Rechtschreib-/Grammatikprüfung", "Inhaltliches Feedback", "Bewertungsvorschläge"],
                 lernziele: ["Lehrkräfte entlasten", "Schnelles Feedback für Schüler", "Objektive Bewertung"],
                 einsatz: "Zur Korrektur von Tests, Aufsätzen und Protokollen in allen Fächern."
+                bild: "Automatische_Korrektur.png"
             },
             {
                 id: 16,
@@ -977,17 +1021,71 @@
         }
 
         function openModal(materialId) {
-            const material = materials.find(m => m.id === materialId);
-            if (!material) return;
+    const material = materials.find(m => m.id === materialId);
+    if (!material) return;
+    
+    const fachClass = 'fach-' + material.fach.toLowerCase().replace('ü', 'ue');
+    const modalBody = document.getElementById('modalBody');
+    
+    // Bild-HTML nur generieren, wenn Bild vorhanden
+    let imageHTML = '';
+    if (material.bild) {
+        imageHTML = `
+            <div class="modal-image-content">
+                <img src="/static/${material.bild}" alt="${material.titel}" loading="lazy">
+            </div>
+        `;
+    }
+    
+    // Modal-Inhalt mit flexiblem Layout
+    modalBody.innerHTML = `
+        <div class="modal-header">
+            <h2>${material.titel}</h2>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="tag tag-fach ${fachClass}">${material.fach}</span>
+                <span class="tag tag-stufe">${material.stufe}</span>
+                <span class="tag tag-ki-${material.kiKat}">${material.kiKat.toUpperCase()}</span>
+            </div>
+        </div>
+        
+        <div class="modal-body-wrapper">
+            <div class="modal-text-content">
+                <div class="modal-section">
+                    <p><strong>${material.langbeschreibung}</strong></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>✨ Funktionen</h3>
+                    <ul>
+                        ${material.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>🎯 Lernziele</h3>
+                    <ul>
+                        ${material.lernziele.map(l => `<li>${l}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>💡 Einsatz im Unterricht</h3>
+                    <p>${material.einsatz}</p>
+                </div>
+            </div>
             
-            const fachClass = 'fach-' + material.fach.toLowerCase().replace('ü', 'ue');
-            const modalBody = document.getElementById('modalBody');
-            
-            modalBody.innerHTML = '<div class="modal-header"><h2>' + material.titel + '</h2><div style="display: flex; gap: 0.5rem; flex-wrap: wrap;"><span class="tag tag-fach ' + fachClass + '">' + material.fach + '</span><span class="tag tag-stufe">' + material.stufe + '</span><span class="tag tag-ki-' + material.kiKat + '">' + material.kiKat.toUpperCase() + '</span></div></div><div class="modal-section"><p><strong>' + material.langbeschreibung + '</strong></p></div><div class="modal-section"><h3>✨ Funktionen</h3><ul>' + material.features.map(f => '<li>' + f + '</li>').join('') + '</ul></div><div class="modal-section"><h3>🎯 Lernziele</h3><ul>' + material.lernziele.map(l => '<li>' + l + '</li>').join('') + '</ul></div><div class="modal-section"><h3>💡 Einsatz im Unterricht</h3><p>' + material.einsatz + '</p></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">← Zurück</button><a href="' + material.link + '" target="_blank" class="btn btn-primary btn-large">🚀 Material öffnen</a></div>';
-            
-            document.getElementById('modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+            ${imageHTML}
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeModal()">← Zurück</button>
+            <a href="${material.link}" target="_blank" class="btn btn-primary btn-large">🚀 Material öffnen</a>
+        </div>
+    `;
+    
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
         function closeModal() {
             document.getElementById('modal').classList.remove('active');
@@ -1085,6 +1183,7 @@
     </script>
 </body>
 </html>
+
 
 
 
