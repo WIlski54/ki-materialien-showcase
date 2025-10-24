@@ -27,15 +27,6 @@
             --gray-900: #111827;
             --shadow: 0 1px 3px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            
-            --farbe-chemie: #dc2626;
-            --farbe-biologie: #15803d;
-            --farbe-mathematik: #2563eb;
-            --farbe-ki: #0d9488;
-            --farbe-deutsch: #f97316;
-            --farbe-englisch: #7c3aed;
-            --farbe-gl: #78350f;
-            --farbe-uebergreifend: #6b7280;
         }
 
         body {
@@ -46,6 +37,7 @@
             line-height: 1.6;
         }
 
+        /* Header */
         header {
             background: white;
             box-shadow: var(--shadow-lg);
@@ -72,6 +64,7 @@
             font-size: 1rem;
         }
 
+        /* Filter Section */
         .filters {
             background: white;
             padding: 2rem;
@@ -133,6 +126,7 @@
             background: var(--gray-300);
         }
 
+        /* Stats */
         .stats {
             text-align: center;
             color: var(--gray-700);
@@ -147,6 +141,7 @@
             font-size: 1.5rem;
         }
 
+        /* Material Grid */
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -160,75 +155,34 @@
             margin-bottom: 3rem;
         }
 
-        .card-flip-container {
-            perspective: 1000px;
-            height: 280px;
-        }
-
-        .card-flipper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        .card-flip-container.flipped .card-flipper {
-            transform: rotateY(180deg);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-
-        .card-front {
+        /* Material Card */
+        .material-card {
             background: white;
+            border-radius: 12px;
             padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.3s;
+            position: relative;
             overflow: hidden;
         }
 
-        .card-front:hover {
+        .material-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
 
-        .card-back {
-            background: white;
-            padding: 1.5rem;
-            transform: rotateY(180deg);
+        .card-header {
             display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .card-bg-icon {
-            position: absolute;
-            bottom: 0.5rem;
-            right: 1rem;
-            width: 130px; 
-            height: 130px; 
-            opacity: 0.25; 
-            pointer-events: none;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        .card-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
         }
-
-        .card-bg-icon.fach-chemie { background-image: url('/static/chemie.png'); }
-        .card-bg-icon.fach-biologie { background-image: url('/static/bio.png'); }
-        .card-bg-icon.fach-mathematik { background-image: url('/static/mathe.png'); }
-        .card-bg-icon.fach-ki { background-image: url('/static/ki.png'); }
-        .card-bg-icon.fach-deutsch { background-image: url('/static/deutsch.png'); }
-        .card-bg-icon.fach-englisch { background-image: url('/static/englisch.png'); }
-        .card-bg-icon.fach-gl { background-image: url('/static/gl.png'); }
-        .card-bg-icon.fach-uebergreifend { background-image: url('/static/uebergreifend.png'); }
 
         .card-title {
             font-size: 1.125rem;
@@ -250,8 +204,6 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
         }
 
         .tag {
@@ -265,18 +217,9 @@
         }
 
         .tag-fach {
-            font-weight: 700;
-            color: white;
+            background: #dbeafe;
+            color: #1e40af;
         }
-        
-        .tag-fach.fach-chemie { background: var(--farbe-chemie); }
-        .tag-fach.fach-biologie { background: var(--farbe-biologie); }
-        .tag-fach.fach-mathematik { background: var(--farbe-mathematik); }
-        .tag-fach.fach-ki { background: var(--farbe-ki); }
-        .tag-fach.fach-deutsch { background: var(--farbe-deutsch); }
-        .tag-fach.fach-englisch { background: var(--farbe-englisch); }
-        .tag-fach.fach-gl { background: var(--farbe-gl); }
-        .tag-fach.fach-uebergreifend { background: var(--farbe-uebergreifend); }
 
         .tag-stufe {
             background: #fef3c7;
@@ -298,184 +241,23 @@
             color: #9f1239;
         }
 
-        .card-back h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1rem;
-            color: var(--gray-900);
-        }
-
-        .card-back .features {
-            flex: 1;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
-        }
-
-        .card-back .features ul {
-            margin: 0.5rem 0;
-            padding-left: 1.25rem;
-        }
-
-        .card-back .features li {
-            margin: 0.4rem 0;
-            color: var(--gray-700);
-        }
-
-        .card-back .buttons {
-            display: flex;
+        .card-link {
+            display: inline-flex;
+            align-items: center;
             gap: 0.5rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.25rem;
-            border: none;
-            border-radius: 8px;
+            color: var(--primary);
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            flex: 1;
-            text-align: center;
             text-decoration: none;
             font-size: 0.875rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-secondary {
-            background: var(--gray-200);
-            color: var(--gray-700);
-        }
-
-        .btn-secondary:hover {
-            background: var(--gray-300);
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            animation: fadeIn 0.3s;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 2.5rem;
-            position: relative;
-            animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.7);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: var(--gray-100);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            line-height: 1;
             transition: all 0.2s;
-            color: var(--gray-700);
         }
 
-        .modal-close:hover {
-            background: var(--gray-200);
-            transform: rotate(90deg);
+        .card-link:hover {
+            color: var(--primary-dark);
+            gap: 0.75rem;
         }
 
-        .modal-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--gray-100);
-        }
-
-        .modal-header h2 {
-            margin: 0 0 1rem 0;
-            color: var(--gray-900);
-            font-size: 1.75rem;
-        }
-
-        .modal-section {
-            margin-bottom: 2rem;
-        }
-
-        .modal-section h3 {
-            margin: 0 0 1rem 0;
-            color: var(--gray-800);
-            font-size: 1.125rem;
-        }
-
-        .modal-section p {
-            color: var(--gray-700);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .modal-section ul {
-            margin: 0;
-            padding-left: 1.5rem;
-        }
-
-        .modal-section li {
-            margin: 0.5rem 0;
-            color: var(--gray-700);
-        }
-
-        .modal-footer {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--gray-100);
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn-large {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-        }
-
+        /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
@@ -493,6 +275,7 @@
             box-shadow: var(--shadow);
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.5rem;
@@ -509,19 +292,9 @@
             .materials-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .card-bg-icon {
-                width: 100px;
-                height: 100px;
-                right: 0.5rem;
-                bottom: 0.5rem;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-            }
         }
 
+        /* Legend */
         .legend {
             background: var(--gray-50);
             padding: 1rem;
@@ -542,48 +315,10 @@
             gap: 1rem;
         }
 
-            .legend-item {
+        .legend-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-        
-        /* ← HIER DEN NEUEN CODE EINFÜGEN */
-        .modal-body-wrapper {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-        }
-
-        .modal-text-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .modal-image-content {
-            flex: 0 0 350px;
-            position: sticky;
-            top: 1rem;
-        }
-
-        .modal-image-content img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: var(--shadow-lg);
-            border: 2px solid var(--gray-200);
-        }
-
-        @media (max-width: 768px) {
-            .modal-body-wrapper {
-                flex-direction: column;
-            }
-            
-            .modal-image-content {
-                flex: 0 0 auto;
-                width: 100%;
-                position: relative;
-            }
         }
     </style>
 </head>
@@ -663,341 +398,36 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="modal" onclick="closeModalOnOutside(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <div id="modalBody"></div>
-        </div>
-    </div>
-
     <footer>
         <p>KI & Unterricht - Materialsammlung | Erstellt mit ❤️ für moderne Bildung</p>
     </footer>
 
     <script>
         const materials = [
-            {
-                id: 0,
-                titel: "Laborgeräte Klasse 7",
-                fach: "Chemie",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "📄 Arbeitsblatt",
-                beschreibung: "Übersicht wichtigster Laborgeräte",
-                link: "https://wilski54.github.io/Laborgeraete_2/",
-                kurzFeatures: ["Interaktive Darstellung", "Selbstlernmodus", "Quizzes"],
-                langbeschreibung: "Ein interaktives Arbeitsblatt zur Einführung in wichtige Laborgeräte für die Klassenstufen 5-7.",
-                features: ["Visuelle Darstellung aller wichtigen Laborgeräte", "Interaktive Beschriftungsfunktion", "Erklärungen zu jedem Gerät", "Selbstkontrolle-Modus"],
-                lernziele: ["Kennenlernen der Grundausstattung eines Chemielabors", "Sichere Handhabung von Laborgeräten", "Verständnis der verschiedenen Funktionen"],
-                einsatz: "Ideal für den Einstieg in experimentelles Arbeiten. Kann sowohl im Klassenverband als auch zur Einzelarbeit genutzt werden.",
-                 bild: "Laborgeräte.png"
-            },
-            {
-                id: 1,
-                titel: "Mendelsche Gesetze I",
-                fach: "Biologie",
-                kiKat: "a",
-                stufe: "8-10",
-                typ: "📄 Arbeitsblatt",
-                beschreibung: "Vererbungsregeln - Interaktive Worksheet",
-                link: "https://wilski54.github.io/Vererbung_1/",
-                kurzFeatures: ["Mendel-Regeln visualisiert", "Interaktive Aufgaben", "Sofort-Feedback"],
-                langbeschreibung: "Interaktives Arbeitsblatt zu den Mendelschen Vererbungsregeln mit praktischen Aufgaben.",
-                features: ["Visuelle Darstellung der Vererbungsvorgänge", "Interaktive Aufgaben", "Automatisches Feedback", "Verschiedene Schwierigkeitsstufen"],
-                lernziele: ["Verständnis der Mendelschen Regeln", "Anwendung auf praktische Beispiele", "Phänotyp und Genotyp unterscheiden"],
-                einsatz: "Perfekt für den Genetik-Unterricht. Einzelarbeit oder Partnerarbeit möglich.",
-                 bild: "Mendel.png"
-            },
-            {
-                id: 2,
-                titel: "Digitaler Lern-Assistent",
-                fach: "KI",
-                kiKat: "b",
-                stufe: "Alle",
-                typ: "🤖 KI-Assistent",
-                beschreibung: "GSM - Automatisiertes Tutorsystem",
-                link: "https://wilski54.github.io/KI-Assisten/",
-                kurzFeatures: ["KI-gestützte Hilfe", "Adaptive Fragen", "Individuelles Lerntempo"],
-                langbeschreibung: "Ein KI-gestützter Lernassistent, der Schülern individuell beim Lernen hilft.",
-                features: ["Adaptive Fragenstellung", "Individuelles Lerntempo", "Sofort-Feedback", "Lernfortschritt-Tracking"],
-                lernziele: ["Selbstständiges Lernen fördern", "Individuelle Unterstützung bieten", "Lernlücken identifizieren"],
-                einsatz: "Ideal für Hausaufgaben, Nachhilfe oder Vertretungsstunden.",
-                 bild: "KI_Assistent.png"
-            },
-            {
-                id: 3,
-                titel: "Interaktive Zuordnungsübung",
-                fach: "GL",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "🎮 Interaktive Übung",
-                beschreibung: "Fragen zu Zeitzeugen",
-                link: "https://wilski54.github.io/Europa2/",
-                kurzFeatures: ["Einfache interaktive Europakarte", "Zuordnungsaufgaben", "Quiz-Modus"],
-                langbeschreibung: "Interaktive Übungen zur Identifizeirung von europäischen Ländern.",
-                features: ["Interaktive Zuordnungsaufgaben", "Quiz zur Selbstkontrolle"],
-                lernziele: ["Zuordnung von Ländern innerhalb Europas übern"],
-                einsatz: "Für den GL-Unterricht und Vertretungsstunden.",
-                 bild: "Zuordnung_europa.png"
-            },
-            {
-                id: 4,
-                titel: "Texte lesen und verstehen",
-                fach: "Deutsch",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "🎮 Interaktive Übung",
-                beschreibung: "KI-unterstütztes Leseverstehen",
-                link: "https://wilski54.github.io/Texte_lesen/",
-                kurzFeatures: ["Leseverstehen trainieren", "Verständnisfragen", "Textanalyse"],
-                langbeschreibung: "KI-gestützte Übungen zum Leseverstehen mit verschiedenen Textsorten.",
-                features: ["Texte werden mittels KI vorgelesen", "Verständnisfragen", "Textanalyse-Tools", "Wortschatz-Übungen"],
-                lernziele: ["Lesekompetenz verbessern", "Textverständnis fördern", "Analytisches Denken schulen"],
-                einsatz: "Für Deutschunterricht und Leseförderung.",
-                 bild: "Texte_verstehen.png"
-            },
-            {
-                id: 5,
-                titel: "Memory (London)",
-                fach: "Englisch",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "🎮 Interaktive Übung",
-                beschreibung: "London Memory Game",
-                link: "https://wilski54.github.io/memory/",
-                kurzFeatures: ["Vokabeln spielerisch lernen", "London-Thema", "Gedächtnistraining"],
-                langbeschreibung: "Spielerisches Vokabeltraining mit London-Bezug im Memory-Format.",
-                features: ["Memory-Spielmechanik", "London-Vokabular", "Verschiedene Schwierigkeitsstufen"],
-                lernziele: ["Vokabeln festigen", "Landeskunde London", "Gedächtnis trainieren"],
-                einsatz: "Ideal für Einstieg oder Auflockerung im Englischunterricht.",
-                 bild: "London_Memory.png"
-            },
-            {
-                id: 6,
-                titel: "Lineare Funktionen",
-                fach: "Mathematik",
-                kiKat: "a",
-                stufe: "8-10",
-                typ: "📄 Arbeitsblatt",
-                beschreibung: "Funktionen interaktiv",
-                link: "https://wilski54.github.io/Lineare_Funktionen_Interaktiv/",
-                kurzFeatures: ["Graphen visualisieren", "Parameter ändern", "Übungsaufgaben"],
-                langbeschreibung: "Interaktive Übungen zu linearen Funktionen mit visueller Darstellung.",
-                features: ["Graphische Darstellung", "Parameter interaktiv ändern", "Übungsaufgaben mit Lösungen"],
-                lernziele: ["Funktionsbegriff verstehen", "Graphen zeichnen können", "Parameter-Einfluss erkennen"],
-                einsatz: "Für Mathematikunterricht Klasse 8-10, Einzel- oder Gruppenarbeit.",
-                 bild: "Lineare_Funktionen.png"
-            },
-            {
-                id: 7,
-                titel: "Übungen zur Aussprache",
-                fach: "Übergreifend",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "🎮 Interaktive Übung",
-                beschreibung: "Einfache Sprachübungen",
-                link: "https://wilski54.github.io/ausprache/",
-                kurzFeatures: ["Aussprache-Training", "Audio-Feedback", "Verschiedene Sprachen möglich"],
-                langbeschreibung: "Sprachübergreifende Aussprache-Übungen mit Audio-Unterstützung.",
-                features: ["Audio-Beispiele", "Aussprache-Feedback", "Wiederholungsmodus"],
-                lernziele: ["Aussprache verbessern", "Sprachgefühl entwickeln", "Selbstbewusstsein beim Sprechen stärken"],
-                einsatz: "Für Sprachunterricht, DaZ/DaF und gemeinsames Lernen.",
-                 bild: "Aussprache.png"
-            },
-            {
-                id: 8,
-                titel: "KI AG",
-                fach: "Übergreifend",
-                kiKat: "a",
-                stufe: "Alle",
-                typ: "🎥 Multimedia",
-                beschreibung: "Programmieren lernen mit KI",
-                link: "https://wilski54.github.io/Arcade80/",
-                kurzFeatures: ["KI-Grundlagen", "Programmier-Einführung", "Projekt-basiert"],
-                langbeschreibung: "Einführung ins Programmieren mit KI-Unterstützung durch praktische Projekte.",
-                features: ["Schritt-für-Schritt Anleitungen", "Praktische Projekte", "KI-Tools kennenlernen", "Code-Beispiele"],
-                lernziele: ["Programmier-Grundlagen", "KI verstehen", "Eigene Projekte umsetzen"],
-                einsatz: "Für AGs, Informatik-Unterricht oder Projekt-Wochen.",
-                 bild: "Arcade.png"
-            },
-            {
-                id: 9,
-                titel: "Vorlage Versuchsprotokoll",
-                fach: "Chemie",
-                kiKat: "b",
-                stufe: "5-10",
-                typ: "🤖 KI-Assistent",
-                beschreibung: "Strukturierte Vorlage für Experimente",
-                link: "https://wilski54.github.io/Versuchsprotokoll_WK/",
-                kurzFeatures: ["Protokoll-Struktur", "KI-Hilfe", "Vorlagen-Generator"],
-                langbeschreibung: "KI-gestützte Vorlage zum Erstellen strukturierter Versuchsprotokolle.",
-                features: ["Strukturierte Vorlage", "KI-Unterstützung beim Formulieren", "Automatische Formatierung"],
-                lernziele: ["Protokolle korrekt schreiben", "Wissenschaftliches Arbeiten lernen", "Strukturiert dokumentieren"],
-                einsatz: "Für alle Experimente im Chemie- und Physikunterricht.",
-                 bild: "Versuchsprotokoll.png"
-            },
-            {
-                id: 10,
-                titel: "Das Lichtmikroskop",
-                fach: "Biologie",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "📄 Arbeitsblatt",
-                beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter",
-                link: "https://wilski54.github.io/microscop/",
-                kurzFeatures: ["Mikroskop-Aufbau", "Bedienung lernen", "Quiz"],
-                langbeschreibung: "Interaktives Material zum Aufbau und zur Bedienung des Lichtmikroskops.",
-                features: ["Aufbau visualisiert", "Bedienungsanleitung", "Übungsaufgaben", "Selbsttest"],
-                lernziele: ["Mikroskop-Aufbau kennen", "Richtige Bedienung erlernen", "Präparate herstellen"],
-                einsatz: "Vor dem ersten Mikroskopieren im Biologieunterricht.",
-                 bild: "Mikroskop.png"
-            },
-            {
-                id: 11,
-                titel: "Individuelle Aufgabenstellung",
-                fach: "Deutsch",
-                kiKat: "a",
-                stufe: "Alle",
-                typ: "📄 Arbeitsblatt",
-                beschreibung: "KI-generierte individuelle Texte",
-                link: "https://wilski54.github.io/Level_Wohen/",
-                kurzFeatures: ["Individuelle Texte", "Schwierigkeitsanpassung", "Automatische Korrektur"],
-                langbeschreibung: "Demonstration zur Erstellung individueller Aufgabenstellungen mit angepasstem Schwierigkeitsgrad.",
-                features: ["Individuelle Texte pro Schüler", "Anpassbare Schwierigkeit", "Automatisches Feedback"],
-                lernziele: ["Individuelle Förderung", "Differenzierung", "Selbstständiges Arbeiten"],
-                einsatz: "Für binnendifferenzierten Unterricht in allen Klassenstufen.",
-                 bild: "Individuelle_Aufgaben.png"
-            },
-            {
-                id: 12,
-                titel: "DialogLab",
-                fach: "Englisch",
-                kiKat: "b",
-                stufe: "Alle",
-                typ: "🤖 KI-Assistent",
-                beschreibung: "Dialog üben mit KI-Feedback",
-                link: "https://wilski54.github.io/LearningLab/",
-                kurzFeatures: ["Dialog-Training", "KI-Feedback", "Verschiedene Szenarien"],
-                langbeschreibung: "KI-gestütztes Dialog-Training mit authentischen Gesprächssituationen.",
-                features: ["Verschiedene Dialog-Szenarien", "Echtzeit-Feedback", "Aussprache-Bewertung", "Fortschritt-Tracking"],
-                lernziele: ["Dialoge führen können", "Sprechkompetenz verbessern", "Selbstbewusstsein stärken"],
-                einsatz: "Für Speaking-Training im Englischunterricht.",
-                 bild: "Dialog_Lab.png"
-            },
-            {
-                id: 13,
-                titel: "Das magische Labyrinth ARITHMA",
-                fach: "Mathematik",
-                kiKat: "a",
-                stufe: "5-7",
-                typ: "🎮 Interaktive Übung",
-                beschreibung: "Die Multiplikation für Kinder",
-                link: "https://wilski54.github.io/arithma10/",
-                kurzFeatures: ["Spielerisches Lernen", "Multiplikation üben", "Abenteuer-Story"],
-                langbeschreibung: "Spielbasiertes Lernen der Multiplikation in einer Abenteuer-Geschichte.",
-                features: ["Spiel-basiertes Lernen", "Multiplikations-Training", "Story-Modus", "Belohnungssystem"],
-                lernziele: ["Einmaleins festigen", "Rechenstrategien entwickeln", "Motivation steigern"],
-                einsatz: "Für Übungsphasen oder in Vertretungsstunden.",
-                 bild: "Labyrinth.png"
-            },
-            {
-                id: 14,
-                titel: "Rechenwege mit KI Assistent",
-                fach: "Mathematik",
-                kiKat: "b",
-                stufe: "5-10",
-                typ: "🤖 KI-Assistent",
-                beschreibung: "Schritt-für-Schritt Rechenwege",
-                link: "https://wilski54.github.io/Matheassitent/",
-                kurzFeatures: ["Schrittweise Lösung", "Erklärungen", "Verschiedene Strategien"],
-                langbeschreibung: "KI-Assistent, der Rechenwege Schritt für Schritt erklärt und verschiedene Lösungsstrategien aufzeigt.",
-                features: ["Schritt-für-Schritt Erklärungen", "Verschiedene Lösungswege", "Adaptives Schwierigkeitsniveau"],
-                lernziele: ["Lösungsstrategien verstehen", "Selbstständig rechnen lernen", "Mathematisches Verständnis entwickeln"],
-                einsatz: "Für Hausaufgaben-Hilfe und individuelles Üben.",
-                 bild: "Matheassistent.png"
-            },
-            {
-                id: 15,
-                titel: "Automatisierter Korrekturassistent",
-                fach: "Chemie",
-                kiKat: "b",
-                stufe: "Alle",
-                typ: "🔧 Tool",
-                beschreibung: "Aufsätze korrigieren mit KI",
-                link: "https://wilski54.github.io/AutometdTest/",
-                kurzFeatures: ["Automatische Korrektur", "Feedback-Generator", "Zeitersparnis"],
-                langbeschreibung: "KI-Tool zur automatisierten Korrektur und Bewertung von Texten mit detailliertem Feedback.",
-                features: ["Automatische Rechtschreib-/Grammatikprüfung", "Inhaltliches Feedback", "Bewertungsvorschläge"],
-                lernziele: ["Lehrkräfte entlasten", "Schnelles Feedback für Schüler", "Objektive Bewertung"],
-                einsatz: "Zur Korrektur von Tests, Aufsätzen und Protokollen in allen Fächern.",
-                bild: "Automatische_Korrektur.png"
-            },
-            {
-                id: 16,
-                titel: "Digitaler Diskussionspartner",
-                fach: "Übergreifend",
-                kiKat: "b",
-                stufe: "8-10",
-                typ: "🤖 KI-Assistent",
-                beschreibung: "Fach-Präsentationen - Diskussionspartner",
-                link: "https://drwk4.pythonanywhere.com/",
-                kurzFeatures: ["Diskussions-Training", "Argument-Feedback", "Rhetorik-Tipps"],
-                langbeschreibung: "KI-gestützter Diskussionspartner zur Vorbereitung auf Präsentationen und Debatten.",
-                features: ["Diskussions-Simulation", "Argument-Analyse", "Rhetorik-Feedback", "Gegenpositionen"],
-                lernziele: ["Argumentieren lernen", "Präsentations-Kompetenz", "Selbstsicher auftreten"],
-                einsatz: "Zur Vorbereitung auf Präsentationen, Prüfungen und Debatten.",
-                 bild: "Diskussionspartner.png"
-            },
-            {
-                id: 17,
-                titel: "Kooperatives Lernsystem",
-                fach: "Übergreifend",
-                kiKat: "c",
-                stufe: "Alle",
-                typ: "🔧 Tool",
-                beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit",
-                link: "https://wilski54.github.io/kolaborativ/",
-                kurzFeatures: ["Echtzeit-Kollaboration", "Gruppen-Management", "Fortschritt-Tracking"],
-                langbeschreibung: "Kooperatives Lernsystem für synchrone Gruppenarbeit mit Echtzeit-Kommunikation.",
-                features: ["Echtzeit-Zusammenarbeit", "Rollen-Vergabe", "Gemeinsame Dokumente", "Chat-Funktion"],
-                lernziele: ["Teamarbeit fördern", "Gemeinsam Probleme lösen", "Kommunikation verbessern"],
-                einsatz: "Für Gruppenarbeiten, Projekte und kooperative Lernformen.",
-                 bild: "Lernsystem.png"
-            },
-            {
-                id: 18,
-                titel: "Interview mit Zeitzeugen",
-                fach: "GL",
-                kiKat: "b",
-                stufe: "8-10",
-                typ: "🎥 Multimedia",
-                beschreibung: "Interaktive historische Interviews",
-                link: "https://wilski54.github.io/Essam_KI_2/",
-                kurzFeatures: ["Authentische Interviews", "Interaktive Fragen", "Historischer Kontext"],
-                langbeschreibung: "Interaktive Zeitzeugen-Interviews zu historischen Ereignissen mit Kontextinformationen.",
-                features: ["Interaktive Fragestellung, die von KI beantwortet werden", "Historische Einordnung", "Quellenkritik"],
-                lernziele: ["Zeitgeschichte verstehen", "Quellen kritisch bewerten", "Empathie entwickeln"],
-                einsatz: "Für Geschichtsunterricht und Projekt-Arbeit.",
-                 bild: "Interview.png"
-            },
-            {
-                id: 19,
-                titel: "Automatisches Feedback",
-                fach: "GL",
-                kiKat: "b",
-                stufe: "8-10",
-                typ: "📄 Arbeitsblatt",
-                beschreibung: "Durch KI generiertes Feedback auf Schülereingaben",
-                link: "https://wilski54.github.io/automte_response/",
-                kurzFeatures: ["Sofort-Feedback", "Individuelle Rückmeldung", "Lernfortschritt"],
-                langbeschreibung: "System für automatisiertes, individuelles Feedback auf Schülerantworten.",
-                features: ["Echtzeit-Feedback", "Individuelle Rückmeldungen", "Lernfortschritt-Analyse"],
-                lernziele: ["Selbstständiges Lernen", "Sofortiges Feedback", "Lernprozess optimieren"],
-                einsatz: "Für alle Fächer mit offenen Aufgabenformaten.",
-                 bild: "Automatisches_Feedback.png"
-            }
+            { titel: "Laborgeräte Klasse 7", fach: "Chemie", kiKat: "a", stufe: "5-7", typ: "📄 Arbeitsblatt", beschreibung: "Übersicht wichtigster Laborgeräte", link: "https://wilski54.github.io/Laborgeraete_2/" },
+            { titel: "Mendelsche Gesetze I", fach: "Biologie", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Vererbungsregeln - Interaktive Worksheet", link: "https://wilski54.github.io/Vererbung_1/" },
+            { titel: "Digitaler Lern-Assistent", fach: "KI", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "GSM - Automatisiertes Tutorsystem", link: "https://wilski54.github.io/KI-Assisten/" },
+            { titel: "Interaktive Zuordnungsübung", fach: "GL", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Fragen zu Zeitzeugen", link: "https://wilski54.github.io/Europa2/" },
+            { titel: "Texte lesen und verstehen", fach: "Deutsch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "KI-unterstütztes Leseverstehen", link: "https://wilski54.github.io/Texte_lesen/" },
+            { titel: "Memory (London)", fach: "Englisch", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "London Memory Game", link: "https://wilski54.github.io/memory/" },
+            { titel: "Lineare Funktionen", fach: "Mathematik", kiKat: "a", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Funktionen interaktiv", link: "https://wilski54.github.io/Lineare_Funktionen_Interaktiv/" },
+            { titel: "Übungen zur Aussprache", fach: "Übergreifend", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Hä? - Sprachübungen", link: "https://wilski54.github.io/ausprache/" },
+            { titel: "KI AG", fach: "Übergreifend", kiKat: "a", stufe: "Alle", typ: "🎥 Multimedia", beschreibung: "Programmieren lernen mit KI", link: "https://wilski54.github.io/Arcade80/" },
+            { titel: "Vorlage Versuchsprotokoll", fach: "Chemie", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Strukturierte Vorlage für Experimente", link: "https://wilski54.github.io/Versuchsprotokoll_WK/" },
+            { titel: "Das Lichtmikroskop", fach: "Biologie", kiKat: "a", stufe: "5-7", typ: "📄 Arbeitsblatt", beschreibung: "Lichtmikroskop - Interaktive Arbeitsblätter", link: "https://wilski54.github.io/microscop/" },
+            { titel: "Individuelle Aufgabenstellung", fach: "Deutsch", kiKat: "a", stufe: "Alle", typ: "📄 Arbeitsblatt", beschreibung: "KI-generierte individuelle Texte", link: "https://wilski54.github.io/Level_Wohen/" },
+            { titel: "DialogLab", fach: "Englisch", kiKat: "b", stufe: "Alle", typ: "🤖 KI-Assistent", beschreibung: "Dialog üben mit KI-Feedback", link: "https://wilski54.github.io/LearningLab/" },
+            { titel: "Das magische Labyrinth ARITHMA", fach: "Mathematik", kiKat: "a", stufe: "5-7", typ: "🎮 Interaktive Übung", beschreibung: "Die Multiplikation für Kinder", link: "https://wilski54.github.io/arithma10/" },
+            { titel: "Rechenwege mit KI Assistent", fach: "Mathematik", kiKat: "b", stufe: "5-10", typ: "🤖 KI-Assistent", beschreibung: "Schritt-für-Schritt Rechenwege", link: "https://wilski54.github.io/Matheassitent/" },
+            { titel: "Automatisierter Korrekturassistent", fach: "Chemie", kiKat: "b", stufe: "Alle", typ: "🔧 Tool", beschreibung: "Aufsätze korrigieren mit KI", link: "https://wilski54.github.io/AutometdTest/" },
+            { titel: "Digitaler Diskussionspartner", fach: "Übergreifend", kiKat: "b", stufe: "8-10", typ: "🤖 KI-Assistent", beschreibung: "Fach-Präsentationen - Diskussionspartner", link: "https://drwk4.pythonanywhere.com/" },
+            { titel: "Kooperatives Lernsystem", fach: "Übergreifend", kiKat: "c", stufe: "Alle", typ: "🔧 Tool", beschreibung: "GSM - Kooperatives Lernsystem für Gruppenarbeit", link: "https://wilski54.github.io/kolaborativ/" },
+            { titel: "Interview mit Zeitzeugen", fach: "GL", kiKat: "b", stufe: "8-10", typ: "🎥 Multimedia", beschreibung: "Interaktive historische Interviews", link: "https://wilski54.github.io/Essam_KI_2/" },
+            { titel: "Automatisches Feedback", fach: "GL", kiKat: "b", stufe: "8-10", typ: "📄 Arbeitsblatt", beschreibung: "Durch KI generiertes Feedback auf Schülereingaben", link: "https://wilski54.github.io/automte_response/" },
+            { titel: "Kooperatives Whiteboard", fach: "Chemie", kiKat: "c", stufe: "Alle", typ: "🎥 Multimedia", beschreibung: "Interaktives Whiteboard zur kooperativen Erstellung von Versuchsskizzen", link: "https://chemie-whiteboard-2.onrender.com/" }
         ];
 
+        // Populate filters
         const faecher = [...new Set(materials.map(m => m.fach))].sort();
         const stufen = [...new Set(materials.map(m => m.stufe))].sort();
         const typen = [...new Set(materials.map(m => m.typ))].sort();
@@ -1027,97 +457,6 @@
             typSelect.appendChild(option);
         });
 
-        function flipCard(id) {
-            const card = document.getElementById('card-' + id);
-            if (card) {
-                card.classList.toggle('flipped');
-            }
-        }
-
-        function openModal(materialId) {
-    const material = materials.find(m => m.id === materialId);
-    if (!material) return;
-    
-    const fachClass = 'fach-' + material.fach.toLowerCase().replace('ü', 'ue');
-    const modalBody = document.getElementById('modalBody');
-    
-    // Bild-HTML nur generieren, wenn Bild vorhanden
-    let imageHTML = '';
-    if (material.bild) {
-        imageHTML = `
-            <div class="modal-image-content">
-                <img src="/static/${material.bild}" alt="${material.titel}" loading="lazy">
-            </div>
-        `;
-    }
-    
-    // Modal-Inhalt mit flexiblem Layout
-    modalBody.innerHTML = `
-        <div class="modal-header">
-            <h2>${material.titel}</h2>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <span class="tag tag-fach ${fachClass}">${material.fach}</span>
-                <span class="tag tag-stufe">${material.stufe}</span>
-                <span class="tag tag-ki-${material.kiKat}">${material.kiKat.toUpperCase()}</span>
-            </div>
-        </div>
-        
-        <div class="modal-body-wrapper">
-            <div class="modal-text-content">
-                <div class="modal-section">
-                    <p><strong>${material.langbeschreibung}</strong></p>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>✨ Funktionen</h3>
-                    <ul>
-                        ${material.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>🎯 Lernziele</h3>
-                    <ul>
-                        ${material.lernziele.map(l => `<li>${l}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>💡 Einsatz im Unterricht</h3>
-                    <p>${material.einsatz}</p>
-                </div>
-            </div>
-            
-            ${imageHTML}
-        </div>
-        
-        <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="closeModal()">← Zurück</button>
-            <a href="${material.link}" target="_blank" class="btn btn-primary btn-large">🚀 Material öffnen</a>
-        </div>
-    `;
-    
-    document.getElementById('modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeModalOnOutside(event) {
-            if (event.target.id === 'modal') {
-                closeModal();
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-        
         function renderMaterials() {
             const fachFilter = document.getElementById('filterFach').value;
             const kiFilter = document.getElementById('filterKI').value;
@@ -1136,27 +475,6 @@
 
                 return matchFach && matchKI && matchStufe && matchTyp && matchSearch;
             });
-            
-            const sortOrder = {
-                "Chemie": 1,
-                "Biologie": 2,
-                "Mathematik": 3,
-                "KI": 4,
-                "Deutsch": 5,
-                "Englisch": 6,
-                "GL": 7,
-                "Übergreifend": 8
-            };
-
-            filtered.sort((a, b) => {
-                const orderA = sortOrder[a.fach] || 99; 
-                const orderB = sortOrder[b.fach] || 99;
-                
-                if (orderA !== orderB) {
-                    return orderA - orderB;
-                }
-                return a.titel.localeCompare(b.titel);
-            });
 
             const grid = document.getElementById('materialsGrid');
             const noResults = document.getElementById('noResults');
@@ -1170,9 +488,26 @@
             }
 
             grid.innerHTML = filtered.map(m => {
-                const fachClass = 'fach-' + m.fach.toLowerCase().replace('ü', 'ue');
-                
-                return '<div class="card-flip-container" id="card-' + m.id + '"><div class="card-flipper"><div class="card-front" onclick="flipCard(' + m.id + ')"><h3 class="card-title">' + m.titel + '</h3><p class="card-description">' + m.beschreibung + '</p><div class="card-tags"><span class="tag tag-fach ' + fachClass + '">' + m.fach + '</span><span class="tag tag-stufe">' + m.stufe + '</span><span class="tag tag-ki-' + m.kiKat + '">' + m.kiKat.toUpperCase() + '</span></div><div class="card-bg-icon ' + fachClass + '" aria-hidden="true"></div></div><div class="card-back"><h3>Kurzübersicht</h3><div class="features"><ul>' + m.kurzFeatures.map(f => '<li>' + f + '</li>').join('') + '</ul></div><div class="buttons"><button class="btn btn-secondary" onclick="event.stopPropagation(); flipCard(' + m.id + ')">Zurück</button><button class="btn btn-primary" onclick="event.stopPropagation(); openModal(' + m.id + ')">Mehr erfahren</button></div></div></div></div>';
+                const icon = m.typ.split(' ')[0];
+                return `
+                    <div class="material-card" onclick="window.open('${m.link}', '_blank')">
+                        <div class="card-header">
+                            <div class="card-icon">${icon}</div>
+                            <div style="flex: 1;">
+                                <h3 class="card-title">${m.titel}</h3>
+                            </div>
+                        </div>
+                        <p class="card-description">${m.beschreibung}</p>
+                        <div class="card-tags">
+                            <span class="tag tag-fach">${m.fach}</span>
+                            <span class="tag tag-stufe">${m.stufe}</span>
+                            <span class="tag tag-ki-${m.kiKat}">${m.kiKat.toUpperCase()}</span>
+                        </div>
+                        <a href="${m.link}" class="card-link" target="_blank" onclick="event.stopPropagation()">
+                            Material öffnen →
+                        </a>
+                    </div>
+                `;
             }).join('');
 
             document.getElementById('count').textContent = filtered.length;
@@ -1187,20 +522,15 @@
             renderMaterials();
         }
 
+        // Event listeners
         document.getElementById('filterFach').addEventListener('change', renderMaterials);
         document.getElementById('filterKI').addEventListener('change', renderMaterials);
         document.getElementById('filterStufe').addEventListener('change', renderMaterials);
         document.getElementById('filterTyp').addEventListener('change', renderMaterials);
         document.getElementById('search').addEventListener('input', renderMaterials);
 
+        // Initial render
         renderMaterials();
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
