@@ -977,6 +977,22 @@
                 lernziele: ["Selbstständiges Lernen", "Sofortiges Feedback", "Lernprozess optimieren"],
                 einsatz: "Für alle Fächer mit offenen Aufgabenformaten."
             }
+            {
+                id: 20,  // ← Nächste freie ID (war 19, jetzt 20)
+                titel: "Kooperatives Whiteboard",
+                fach: "Chemie",  
+                kiKat: "c",  
+                stufe: "Alle",  
+                typ: "🎥 Multimedia",
+                beschreibung: "Kooperatives Whiteboard zur Erstellung von Versuchsskizzen",
+                link: "https://ki-materialien-showcase.onrender.com/",
+                kurzFeatures: ["Kooperativ", "Vorlagen von Glasgeräten", "Lehrerkontrollfunktionen"],
+                langbeschreibung: "Ausführliche Beschreibung für das Modal.",
+                features: ["Detailliertes Feature 1", "Detailliertes Feature 2", "Detailliertes Feature 3"],
+                lernziele: ["Versuchsskizzen", "Laborgeräte", "Kooperative Erstellung"],
+                einsatz: "Für Versuchsauswertungen im Fach Chemie",
+                bild: "dein-bild.png"  
+        }
         ];
 
         const faecher = [...new Set(materials.map(m => m.fach))].sort();
@@ -1212,3 +1228,4 @@
     </script>
 </body>
 </html>
+
