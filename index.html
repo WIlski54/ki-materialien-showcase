@@ -976,7 +976,7 @@
                 features: ["Echtzeit-Feedback", "Individuelle Rückmeldungen", "Lernfortschritt-Analyse"],
                 lernziele: ["Selbstständiges Lernen", "Sofortiges Feedback", "Lernprozess optimieren"],
                 einsatz: "Für alle Fächer mit offenen Aufgabenformaten."
-            }
+            },
             {
                 id: 20,  // ← Nächste freie ID (war 19, jetzt 20)
                 titel: "Kooperatives Whiteboard",
@@ -992,8 +992,8 @@
                 lernziele: ["Versuchsskizzen", "Laborgeräte", "Kooperative Erstellung"],
                 einsatz: "Für Versuchsauswertungen im Fach Chemie",
                 bild: "dein-bild.png"  
-        }
-        ];
+            }
+      ];
 
         const faecher = [...new Set(materials.map(m => m.fach))].sort();
         const stufen = [...new Set(materials.map(m => m.stufe))].sort();
@@ -1228,4 +1228,5 @@
     </script>
 </body>
 </html>
+
 
